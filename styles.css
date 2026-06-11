@@ -2392,7 +2392,8 @@ p {
   bottom: 160px !important;
   margin: 0 !important;
   transform: none !important;
-  z-index: 997 !important;
+  z-index: 10001 !important;
+  pointer-events: auto !important;
 }
 
 /* Add explicit fallback for the minimized Tawk container */
@@ -2415,7 +2416,8 @@ p {
 /* Ensure Tawk iframe and elements don't interfere */
 #tawk-iframe,
 .tawk-iframe {
-  z-index: 997 !important;
+  z-index: 10001 !important;
+  pointer-events: auto !important;
 }
 
 /* ==================== PREFERS REDUCED MOTION ==================== */

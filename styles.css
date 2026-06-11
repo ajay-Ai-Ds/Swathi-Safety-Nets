@@ -592,71 +592,21 @@ p {
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
-    margin-bottom: 24px;
-  }
+  margin-bottom: 40px;
+}
 
-  .hero-secondary-cta {
-    margin-bottom: 24px;
-  }
+.hero-cta .btn {
+  padding: 16px 32px;
+  font-size: 1rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+}
 
-  .hero-cta .btn {
-    padding: 16px 32px;
-    font-size: 1rem;
-    border-radius: var(--radius-md);
-    font-weight: 700;
-  }
-
-  .hero-carousel {
-    display: none;
-    position: relative;
-    overflow: hidden;
-    border-radius: 16px;
-    width: 100%;
-    margin-bottom: 20px;
-    background: rgba(255,255,255,0.05);
-  }
-
-  .hero-carousel-track {
-    display: flex;
-    transition: transform 0.6s ease;
-    will-change: transform;
-  }
-
-  .hero-carousel-slide {
-    min-width: 100%;
-    flex: 0 0 100%;
-    aspect-ratio: 4 / 3;
-    overflow: hidden;
-  }
-
-  .hero-carousel-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .hero-carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    padding: 12px 0;
-  }
-
-  .hero-carousel-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    border: none;
-    background: rgba(255, 255, 255, 0.45);
-    transition: transform 0.2s ease, background 0.2s ease;
-    cursor: pointer;
-  }
-
-  .hero-carousel-dot.active {
-    background: rgba(255, 255, 255, 0.95);
-    transform: scale(1.15);
-  }
+.hero-cta .btn-hero-call {
+  background: var(--white);
+  color: var(--primary-800);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
 
 .hero-cta .btn-hero-call:hover {
   transform: translateY(-3px);
@@ -1992,10 +1942,6 @@ p {
   .hero-visual,
   .hero-image-card {
     display: none;
-  }
-
-  .hero-carousel {
-    display: block;
   }
 
   .hero-cta {

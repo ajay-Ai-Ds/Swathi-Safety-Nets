@@ -1932,8 +1932,20 @@ p {
     font-size: clamp(1.7rem, 7vw, 2.4rem);
   }
 
-  .hero-visual {
+  .hero-content {
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-visual,
+  .hero-image-card {
     display: none;
+  }
+
+  .hero-cta {
+    justify-content: center;
   }
 
   .hero-cta .btn {

@@ -47,6 +47,15 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
 
+  <!-- Preconnect to critical external domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://wa.me">
+
+  <!-- Preload hero image for better LCP -->
+  <link rel="preload" as="image" href="images/gallery_balcony_nets.png" imagesrcset="images/gallery_balcony_nets.png 1920w" imagesizes="(max-width: 768px) 100vw, 50vw">
+
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 
@@ -271,7 +280,7 @@
   <header class="header" id="header">
     <div class="container">
       <a href="#" class="logo" aria-label="Swathi Safety Nets Home">
-        <img src="images/logo.png" alt="Swathi Safety Nets Logo" class="logo-image" width="50" height="50" loading="eager">
+        <img src="images/logo.png" alt="Swathi Safety Nets Logo" class="logo-image" width="50" height="50" loading="eager" decoding="async">
         <div class="logo-text">
           <h3>Swathi Safety Nets</h3>
           <span>Bangalore's Trusted Safety Experts</span>
@@ -345,7 +354,7 @@
     <div class="hero-shape hero-shape-2"></div>
 
     <div class="hero-bg-image">
-      <img src="images/gallery_balcony_nets.png" alt="Safety net installation on modern apartment building in Bangalore" loading="eager" width="1920" height="1080">
+      <img src="images/gallery_balcony_nets.png" alt="Safety net installation on modern apartment building in Bangalore" loading="eager" width="1920" height="1080" decoding="async">
     </div>
 
     <div class="container">
@@ -392,7 +401,7 @@
 
       <div class="hero-visual">
         <div class="hero-image-card">
-          <img src="images/gallery_balcony_nets.png" alt="Premium balcony safety net installation by Swathi Safety Nets in Bangalore" loading="eager" width="500" height="375">
+          <img src="images/gallery_balcony_nets.png" alt="Premium balcony safety net installation by Swathi Safety Nets in Bangalore" loading="eager" width="500" height="375" decoding="async">
           <div class="image-overlay"></div>
           <div class="hero-stats-overlay">
             <div class="hero-stat">
@@ -457,7 +466,7 @@
             <h3>Pigeon Safety Nets</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/pigeon.webp" alt="Pigeon Safety Nets" loading="lazy" width="300" height="200" style="object-fit: cover;">
+            <img src="images/pigeon.webp" alt="Pigeon Safety Nets" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
           </div>
           <div class="service-card-body">
             <p>Keep pigeons and birds away from your balconies, windows, and terraces with our durable pigeon safety nets. Hygienic, maintenance-free, and humane solution for your home.</p>
@@ -484,7 +493,7 @@
             <h3>Balcony Safety Nets</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/balcony.jpg" alt="Balcony Safety Nets" loading="lazy" width="300" height="200" style="object-fit: cover;">
+            <img src="images/balcony.jpg" alt="Balcony Safety Nets" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
           </div>
           <div class="service-card-body">
             <p>Secure your balconies with premium HDPE safety nets. Perfect for high-rise apartments to prevent accidents and ensure family safety in Bangalore's growing skyline.</p>
@@ -511,7 +520,7 @@
             <h3>Children Safety Nets</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/child.webp" alt="Children Safety Nets" loading="lazy" width="300" height="200" style="object-fit: cover;">
+            <img src="images/child.webp" alt="Children Safety Nets" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
           </div>
           <div class="service-card-body">
             <p>Protect your children from balcony and window falls with our child-proof safety nets. Tested for maximum strength and reliability — every parent's peace of mind.</p>
@@ -538,7 +547,7 @@
             <h3>Pet Safety Nets</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/pets.webp" alt="Pet Safety Nets" loading="lazy" width="300" height="200" style="object-fit: cover;">
+            <img src="images/pets.webp" alt="Pet Safety Nets" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
           </div>
           <div class="service-card-body">
             <p>Keep your pets safe on balconies and open areas with our sturdy pet safety nets. Strong enough to hold any pet securely while allowing fresh air flow.</p>
@@ -565,7 +574,7 @@
             <h3>Construction Safety Nets</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/constructionnets.webp" alt="Construction Safety Nets" loading="lazy" width="300" height="200" style="object-fit: cover;">
+            <img src="images/constructionnets.webp" alt="Construction Safety Nets" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
           </div>
           <div class="service-card-body">
             <p>Ensure worker safety at construction sites with our industrial-grade safety nets. Fully compliant with all construction safety standards and regulations.</p>
@@ -592,7 +601,7 @@
             <h3>Duct Area Safety Nets</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/ductareanets.webp" alt="Duct Area Safety Nets" loading="lazy" width="300" height="200" style="object-fit: cover;">
+            <img src="images/ductareanets.webp" alt="Duct Area Safety Nets" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
           </div>
           <div class="service-card-body">
             <p>Cover duct areas and shafts with our premium safety nets to prevent debris, pigeons, and accidents in residential complexes and commercial buildings.</p>
@@ -619,7 +628,7 @@
             <h3>Cricket Practice Nets</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/cricket.jpeg" alt="Cricket Practice Nets" loading="lazy" width="300" height="200" style="object-fit: cover;">
+            <img src="images/cricket.jpeg" alt="Cricket Practice Nets" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
           </div>
           <div class="service-card-body">
             <p>Professional-grade cricket practice nets for academies, clubs, and home practice setups. Durable, weather-resistant, and designed for intense practice sessions.</p>
@@ -646,7 +655,7 @@
             <h3>Coconut Tree Safety Nets</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/coconut.webp" alt="Coconut Tree Safety Nets" loading="lazy" width="300" height="200" style="object-fit: cover;">
+            <img src="images/coconut.webp" alt="Coconut Tree Safety Nets" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
           </div>
           <div class="service-card-body">
             <p>Protect people and property from falling coconuts with our specialized coconut tree safety nets. Strong, long-lasting, and designed for tropical environments.</p>
@@ -673,7 +682,7 @@
             <h3>Industrial Safety Nets</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/industrial.jpg" alt="Industrial Safety Nets" loading="lazy" width="300" height="200" style="object-fit: cover;">
+            <img src="images/industrial.jpg" alt="Industrial Safety Nets" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
           </div>
           <div class="service-card-body">
             <p>Heavy-duty safety nets for industrial facilities, warehouses, and factories. Meeting all industrial safety requirements and protecting your workforce effectively.</p>
@@ -700,7 +709,7 @@
             <h3>Monkey Safety Nets</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/4.jpeg" alt="Monkey Safety Nets" loading="lazy" width="300" height="200" style="object-fit: cover;">
+            <img src="images/4.jpeg" alt="Monkey Safety Nets" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
           </div>
           <div class="service-card-body">
             <p>Keep monkeys away from your home and garden with our specially designed monkey safety nets. Strong, tamper-proof, and built to withstand aggressive pulling.</p>
@@ -727,7 +736,7 @@
             <h3>Bird Protection Nets</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/bird.jpg" alt="Bird Protection Nets" loading="lazy" width="300" height="200" style="object-fit: cover;">
+            <img src="images/bird.jpg" alt="Bird Protection Nets" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
           </div>
           <div class="service-card-body">
             <p>Comprehensive bird protection solutions for homes, offices, and agricultural areas. Humane and effective bird deterrent that keeps spaces clean and hygienic.</p>
@@ -763,7 +772,7 @@
       <div class="gallery-grid stagger-children">
 
         <div class="gallery-item reveal">
-          <img src="images/pigeon.webp" alt="Pigeon safety net installation on apartment balcony in Bangalore" loading="lazy" width="600" height="450" style="object-fit: cover;">
+          <img src="images/pigeon.webp" alt="Pigeon safety net installation on apartment balcony in Bangalore" loading="lazy" width="600" height="450" decoding="async" style="object-fit: cover;">
           <div class="gallery-overlay">
             <h4>Pigeon Safety Net Installation</h4>
             <div class="gallery-overlay-cta">
@@ -778,7 +787,7 @@
         </div>
 
         <div class="gallery-item reveal">
-          <img src="images/balcony.jpg" alt="Balcony safety net installation in high-rise apartment Bangalore" loading="lazy" width="600" height="450" style="object-fit: cover;">
+          <img src="images/balcony.jpg" alt="Balcony safety net installation in high-rise apartment Bangalore" loading="lazy" width="600" height="450" decoding="async" style="object-fit: cover;">
           <div class="gallery-overlay">
             <h4>Balcony Safety Net Installation</h4>
             <div class="gallery-overlay-cta">
@@ -793,7 +802,7 @@
         </div>
 
         <div class="gallery-item reveal">
-          <img src="images/child.webp" alt="Children safety net for balcony protection in Bangalore apartment" loading="lazy" width="600" height="450" style="object-fit: cover;">
+          <img src="images/child.webp" alt="Children safety net for balcony protection in Bangalore apartment" loading="lazy" width="600" height="450" decoding="async" style="object-fit: cover;">
           <div class="gallery-overlay">
             <h4>Children Safety Net Installation</h4>
             <div class="gallery-overlay-cta">
@@ -808,7 +817,7 @@
         </div>
 
         <div class="gallery-item reveal">
-          <img src="images/pets.webp" alt="Pet safety net installed on apartment balcony with dog in Bangalore" loading="lazy" width="600" height="450" style="object-fit: cover;">
+          <img src="images/pets.webp" alt="Pet safety net installed on apartment balcony with dog in Bangalore" loading="lazy" width="600" height="450" decoding="async" style="object-fit: cover;">
           <div class="gallery-overlay">
             <h4>Pet Safety Net Installation</h4>
             <div class="gallery-overlay-cta">
@@ -823,7 +832,7 @@
         </div>
 
         <div class="gallery-item reveal">
-          <img src="images/constructionnets.webp" alt="Construction safety net installation on building site in Bangalore" loading="lazy" width="600" height="450" style="object-fit: cover;">
+          <img src="images/constructionnets.webp" alt="Construction safety net installation on building site in Bangalore" loading="lazy" width="600" height="450" decoding="async" style="object-fit: cover;">
           <div class="gallery-overlay">
             <h4>Construction Safety Net Installation</h4>
             <div class="gallery-overlay-cta">
@@ -838,7 +847,7 @@
         </div>
 
         <div class="gallery-item reveal">
-          <img src="images/bird.jpg" alt="Bird protection safety net on commercial building in Bangalore" loading="lazy" width="600" height="450" style="object-fit: cover;">
+          <img src="images/bird.jpg" alt="Bird protection safety net on commercial building in Bangalore" loading="lazy" width="600" height="450" decoding="async" style="object-fit: cover;">
           <div class="gallery-overlay">
             <h4>Bird Protection Net Installation</h4>
             <div class="gallery-overlay-cta">
@@ -1468,14 +1477,14 @@
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" role="dialog" aria-label="Image Lightbox">
     <span class="lightbox-close" id="lightbox-close" role="button" aria-label="Close lightbox">&times;</span>
-    <img src="" alt="Gallery Image" id="lightbox-img">
+    <img src="" alt="Gallery Image" id="lightbox-img" width="800" height="600" decoding="async">
   </div>
 
   <!-- JavaScript -->
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 
   <!-- Start of Tawk.to Script -->
-  <script type="text/javascript">
+  <script type="text/javascript" defer>
   var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
   
   // Position Tawk widget on bottom-left

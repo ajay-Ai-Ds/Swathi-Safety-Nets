@@ -478,6 +478,28 @@ p {
   margin-top: 30px;
 }
 
+.mobile-call-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  background: var(--primary-25);
+  color: var(--primary-800);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.mobile-call-details i {
+  font-size: 1.1rem;
+  color: var(--primary-600);
+}
+
+.mobile-call-details a {
+  color: inherit;
+  text-decoration: underline;
+}
+
 /* ---------- Hero Section ---------- */
 .hero {
   position: relative;

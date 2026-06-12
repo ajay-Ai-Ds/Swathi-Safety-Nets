@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-
+    
     if (header) {
       if (currentScroll > 50) {
         header.classList.add('scrolled');
@@ -54,38 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   }, { passive: true });
-
-  // ==================== HERO SLIDER ====================
-  const heroSlides = document.querySelectorAll('.hero-card-slide');
-  const heroDots = document.querySelectorAll('.hero-slider-dot');
-  let heroIndex = 0;
-  let heroTimer;
-
-  const showHeroSlide = (index) => {
-    heroSlides.forEach((slide, idx) => {
-      slide.classList.toggle('active', idx === index);
-    });
-    heroDots.forEach((dot, idx) => {
-      dot.classList.toggle('active', idx === index);
-    });
-    heroIndex = index;
-  };
-
-  const nextHeroSlide = () => {
-    showHeroSlide((heroIndex + 1) % heroSlides.length);
-  };
-
-  if (heroSlides.length > 0) {
-    heroTimer = window.setInterval(nextHeroSlide, 4800);
-
-    heroDots.forEach((dot, idx) => {
-      dot.addEventListener('click', () => {
-        showHeroSlide(idx);
-        window.clearInterval(heroTimer);
-        heroTimer = window.setInterval(nextHeroSlide, 4800);
-      });
-    });
-  }
 
   // ==================== SMOOTH SCROLLING ====================
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -309,6 +277,84 @@ document.addEventListener('DOMContentLoaded', () => {
 
     lazyImages.forEach(img => imageObserver.observe(img));
   }
+
+  // ==================== HERO SLIDER ====================
+  const heroSlides = document.querySelectorAll('.hero-slide');
+  const sliderDots = document.querySelectorAll('.slider-dot');
+  let activeSlide = 0;
+  let sliderTimer;
+
+  const updateHeroSlide = (index) => {
+    heroSlides.forEach((slide, slideIndex) => {
+      const isActive = slideIndex === index;
+      slide.classList.toggle('active', isActive);
+    });
+    sliderDots.forEach((dot, dotIndex) => {
+      dot.classList.toggle('active', dotIndex === index);
+    });
+    activeSlide = index;
+  };
+
+  const nextHeroSlide = () => {
+    const nextIndex = (activeSlide + 1) % heroSlides.length;
+    updateHeroSlide(nextIndex);
+  };
+
+  const startHeroSlider = () => {
+    if (heroSlides.length > 1) {
+      sliderTimer = window.setInterval(nextHeroSlide, 5500);
+    }
+  };
+
+  sliderDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      updateHeroSlide(index);
+      if (sliderTimer) {
+        window.clearInterval(sliderTimer);
+        startHeroSlider();
+      }
+    });
+  });
+
+  startHeroSlider();
+
+  const miniSlides = document.querySelectorAll('.mini-slide');
+  const miniDots = document.querySelectorAll('.mini-dot');
+  let miniActive = 0;
+  let miniTimer;
+
+  const updateMiniSlide = (index) => {
+    miniSlides.forEach((slide, slideIndex) => {
+      slide.classList.toggle('active', slideIndex === index);
+    });
+    miniDots.forEach((dot, dotIndex) => {
+      dot.classList.toggle('active', dotIndex === index);
+    });
+    miniActive = index;
+  };
+
+  const nextMiniSlide = () => {
+    const nextIndex = (miniActive + 1) % miniSlides.length;
+    updateMiniSlide(nextIndex);
+  };
+
+  const startMiniSlider = () => {
+    if (miniSlides.length > 1) {
+      miniTimer = window.setInterval(nextMiniSlide, 4200);
+    }
+  };
+
+  miniDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      updateMiniSlide(index);
+      if (miniTimer) {
+        window.clearInterval(miniTimer);
+        startMiniSlider();
+      }
+    });
+  });
+
+  startMiniSlider();
 
   // ==================== PERFORMANCE: PASSIVE EVENT LISTENERS ====================
   // Touch-friendly: prevent 300ms delay on mobile

@@ -1,70 +1,153 @@
 /* ============================================
    SWATHI SAFETY NETS - Premium JavaScript
-   Animations, Interactions & Mobile-First UX
+   Blue Theme - Clean & Modern
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
-  
+
   // ==================== MOBILE MENU ====================
-  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-  const mobileContactItems = document.querySelectorAll('.mobile-contact-item');
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  const mobileOverlay = document.getElementById('mobile-overlay');
+  const mobileNavClose = document.getElementById('mobile-nav-close');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
 
-  if (mobileMenuBtn && mobileMenu) {
-    mobileMenuBtn.addEventListener('click', () => {
-      const isActive = mobileMenu.classList.contains('active');
-      mobileMenuBtn.classList.toggle('active');
-      mobileMenu.classList.toggle('active');
-      mobileMenuBtn.setAttribute('aria-expanded', !isActive);
-      document.body.style.overflow = isActive ? '' : 'hidden';
-    });
-
-    mobileNavLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenuBtn.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        mobileMenuBtn.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      });
-    });
-
-    // Close menu when contact items are clicked
-    mobileContactItems.forEach(item => {
-      item.addEventListener('click', () => {
-        mobileMenuBtn.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        mobileMenuBtn.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      });
-    });
+  function openMobileMenu() {
+    mobileNav.classList.add('open');
+    mobileOverlay.classList.add('visible');
+    hamburger.classList.add('active');
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
   }
 
+  function closeMobileMenu() {
+    mobileNav.classList.remove('open');
+    mobileOverlay.classList.remove('visible');
+    hamburger.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  if (hamburger) hamburger.addEventListener('click', openMobileMenu);
+  if (mobileNavClose) mobileNavClose.addEventListener('click', closeMobileMenu);
+  if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileMenu);
+
+  mobileNavLinks.forEach(link => {
+    link.addEventListener('click', closeMobileMenu);
+  });
+
   // ==================== HEADER SCROLL EFFECT ====================
-  const header = document.getElementById('header');
+  const mainHeader = document.getElementById('main-header');
+  const topbar = document.getElementById('topbar');
+  const scrollProgress = document.getElementById('scroll-progress');
+
+  let lastScroll = 0;
+  let topbarHidden = false;
 
   window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-    
-    if (header) {
-      if (currentScroll > 50) {
-        header.classList.add('scrolled');
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (currentScroll / docHeight) * 100;
+
+    // Scroll progress bar
+    if (scrollProgress) {
+      scrollProgress.style.width = scrollPercent + '%';
+    }
+
+    // Header solid on scroll
+    if (mainHeader) {
+      if (currentScroll > 60) {
+        mainHeader.classList.add('scrolled');
+        if (topbar && !topbarHidden) {
+          topbar.style.transform = 'translateY(-100%)';
+          topbar.style.transition = 'transform 0.3s ease';
+          topbarHidden = true;
+        }
       } else {
-        header.classList.remove('scrolled');
+        mainHeader.classList.remove('scrolled');
+        if (topbar && topbarHidden) {
+          topbar.style.transform = 'translateY(0)';
+          topbarHidden = false;
+        }
       }
     }
+
+    lastScroll = currentScroll;
   }, { passive: true });
+
+  // ==================== HERO BACKGROUND SLIDER ====================
+  const heroSlides = document.querySelectorAll('.hero-slide');
+  let heroIndex = 0;
+  const heroInterval = 5000;
+
+  function nextHeroSlide() {
+    if (heroSlides.length === 0) return;
+    heroSlides[heroIndex].classList.remove('active');
+    heroIndex = (heroIndex + 1) % heroSlides.length;
+    heroSlides[heroIndex].classList.add('active');
+  }
+
+  if (heroSlides.length > 1) {
+    setInterval(nextHeroSlide, heroInterval);
+  }
+
+  // ==================== HERO IMAGE CARD SLIDER ====================
+  const imageSlides = document.querySelectorAll('.hero-image-slide');
+  const sliderDots = document.querySelectorAll('.slider-dot');
+  const sliderProgressBar = document.getElementById('slider-progress');
+  let slideIndex = 0;
+  const slideDuration = 4000;
+  let slideTimer;
+  let progressStart;
+
+  function goToSlide(index) {
+    imageSlides.forEach(s => s.classList.remove('active'));
+    sliderDots.forEach(d => d.classList.remove('active'));
+    slideIndex = index;
+    imageSlides[slideIndex].classList.add('active');
+    sliderDots[slideIndex].classList.add('active');
+    startProgress();
+  }
+
+  function nextSlide() {
+    goToSlide((slideIndex + 1) % imageSlides.length);
+  }
+
+  function startProgress() {
+    if (sliderProgressBar) {
+      sliderProgressBar.style.transition = 'none';
+      sliderProgressBar.style.width = '0%';
+      // Force reflow
+      sliderProgressBar.offsetWidth;
+      sliderProgressBar.style.transition = `width ${slideDuration}ms linear`;
+      sliderProgressBar.style.width = '100%';
+    }
+    clearTimeout(slideTimer);
+    slideTimer = setTimeout(nextSlide, slideDuration);
+  }
+
+  // Dot click
+  sliderDots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      goToSlide(parseInt(dot.dataset.slide));
+    });
+  });
+
+  // Start slider
+  if (imageSlides.length > 1) {
+    startProgress();
+  }
 
   // ==================== SMOOTH SCROLLING ====================
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
       if (targetId === '#') return;
-      
+
       const targetEl = document.querySelector(targetId);
       if (targetEl) {
         e.preventDefault();
-        const headerHeight = header ? header.offsetHeight : 0;
+        const headerHeight = mainHeader ? mainHeader.offsetHeight : 0;
         const elementPosition = targetEl.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 10;
 
@@ -76,9 +159,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ==================== SCROLL REVEAL ANIMATIONS ====================
+  // ==================== SCROLL REVEAL ====================
   const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-  
+
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -94,9 +177,15 @@ document.addEventListener('DOMContentLoaded', () => {
   revealElements.forEach(el => revealObserver.observe(el));
 
   // ==================== COUNTER ANIMATION ====================
-  const animateCounterElements = (elements, suffix = '') => {
-    elements.forEach(element => {
-      const target = parseInt(element.getAttribute('data-target'));
+  const counters = document.querySelectorAll('.counter');
+  let countersAnimated = false;
+
+  function animateCounters() {
+    if (countersAnimated) return;
+    countersAnimated = true;
+
+    counters.forEach(counter => {
+      const target = parseInt(counter.getAttribute('data-target'));
       const duration = 2000;
       const step = target / (duration / 16);
       let current = 0;
@@ -104,34 +193,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const updateCounter = () => {
         current += step;
         if (current < target) {
-          element.textContent = Math.floor(current).toLocaleString();
+          counter.textContent = Math.floor(current).toLocaleString();
           requestAnimationFrame(updateCounter);
         } else {
-          element.textContent = target.toLocaleString() + suffix;
+          counter.textContent = target.toLocaleString();
         }
       };
-
       updateCounter();
     });
-  };
+  }
 
-  // Animate regular counters
-  const counters = document.querySelectorAll('.counter');
-  let countersAnimated = false;
-
-  const animateCounters = () => {
-    if (countersAnimated) return;
-    animateCounterElements(counters);
-    countersAnimated = true;
-  };
-
-  // Animate hero stat numbers after a short delay
-  const heroStatNumbers = document.querySelectorAll('.hero-stat .stat-number');
-  setTimeout(() => {
-    animateCounterElements(heroStatNumbers, '+');
-  }, 500);
-
-  // Observer for stat counters
   const statsBar = document.querySelector('.stats-bar');
   if (statsBar) {
     const statsObserver = new IntersectionObserver((entries) => {
@@ -142,7 +213,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }, { threshold: 0.3 });
-
     statsObserver.observe(statsBar);
   }
 
@@ -151,19 +221,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   faqItems.forEach(item => {
     const question = item.querySelector('.faq-question');
-    
+    if (!question) return;
+
     question.addEventListener('click', () => {
       const isActive = item.classList.contains('active');
 
-      // Close all other items
       faqItems.forEach(otherItem => {
         if (otherItem !== item) {
           otherItem.classList.remove('active');
-          otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          const q = otherItem.querySelector('.faq-question');
+          if (q) q.setAttribute('aria-expanded', 'false');
         }
       });
 
-      // Toggle current item
       item.classList.toggle('active');
       question.setAttribute('aria-expanded', !isActive);
     });
@@ -186,24 +256,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  if (lightboxClose) {
-    lightboxClose.addEventListener('click', closeLightbox);
-  }
-
-  if (lightbox) {
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) {
-        closeLightbox();
-      }
-    });
-  }
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) {
-      closeLightbox();
-    }
-  });
-
   function closeLightbox() {
     if (lightbox) {
       lightbox.classList.remove('active');
@@ -211,35 +263,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if (lightbox) lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeLightbox();
+      closeMobileMenu();
+    }
+  });
+
   // ==================== SCROLL TO TOP ====================
   const scrollTopBtn = document.getElementById('scroll-top');
 
   window.addEventListener('scroll', () => {
     if (scrollTopBtn) {
-      if (window.pageYOffset > 500) {
-        scrollTopBtn.classList.add('visible');
-      } else {
-        scrollTopBtn.classList.remove('visible');
-      }
+      scrollTopBtn.classList.toggle('visible', window.pageYOffset > 500);
     }
   }, { passive: true });
 
   if (scrollTopBtn) {
     scrollTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 
-  // ==================== ACTIVE NAV LINK HIGHLIGHTING ====================
+  // ==================== ACTIVE NAV LINK ====================
   const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-menu a');
+  const navLinks = document.querySelectorAll('.nav-list a');
 
   window.addEventListener('scroll', () => {
     let current = '';
-    const headerHeight = header ? header.offsetHeight : 0;
+    const headerHeight = mainHeader ? mainHeader.offsetHeight : 0;
 
     sections.forEach(section => {
       const sectionTop = section.offsetTop - headerHeight - 100;
@@ -256,170 +313,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { passive: true });
 
-  // ==================== LAZY LOADING IMAGES ====================
-  if ('IntersectionObserver' in window) {
-    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-    
-    const imageObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          if (img.dataset.src) {
-            img.src = img.dataset.src;
-            img.removeAttribute('data-src');
-          }
-          imageObserver.unobserve(img);
-        }
-      });
-    }, {
-      rootMargin: '200px 0px'
-    });
-
-    lazyImages.forEach(img => imageObserver.observe(img));
-  }
-
-  // ==================== HERO SLIDER ====================
-  const heroSlides = document.querySelectorAll('.hero-slide');
-  const sliderDots = document.querySelectorAll('.slider-dot');
-  let activeSlide = 0;
-  let sliderTimer;
-
-  const updateHeroSlide = (index) => {
-    heroSlides.forEach((slide, slideIndex) => {
-      const isActive = slideIndex === index;
-      slide.classList.toggle('active', isActive);
-    });
-    sliderDots.forEach((dot, dotIndex) => {
-      dot.classList.toggle('active', dotIndex === index);
-    });
-    activeSlide = index;
-  };
-
-  const nextHeroSlide = () => {
-    const nextIndex = (activeSlide + 1) % heroSlides.length;
-    updateHeroSlide(nextIndex);
-  };
-
-  const startHeroSlider = () => {
-    if (heroSlides.length > 1) {
-      sliderTimer = window.setInterval(nextHeroSlide, 5500);
-    }
-  };
-
-  sliderDots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-      updateHeroSlide(index);
-      if (sliderTimer) {
-        window.clearInterval(sliderTimer);
-        startHeroSlider();
-      }
-    });
-  });
-
-  startHeroSlider();
-
-  const miniSlides = document.querySelectorAll('.mini-slide');
-  const miniDots = document.querySelectorAll('.mini-dot');
-  let miniActive = 0;
-  let miniTimer;
-
-  const updateMiniSlide = (index) => {
-    miniSlides.forEach((slide, slideIndex) => {
-      slide.classList.toggle('active', slideIndex === index);
-    });
-    miniDots.forEach((dot, dotIndex) => {
-      dot.classList.toggle('active', dotIndex === index);
-    });
-    miniActive = index;
-  };
-
-  const nextMiniSlide = () => {
-    const nextIndex = (miniActive + 1) % miniSlides.length;
-    updateMiniSlide(nextIndex);
-  };
-
-  const startMiniSlider = () => {
-    if (miniSlides.length > 1) {
-      miniTimer = window.setInterval(nextMiniSlide, 4200);
-    }
-  };
-
-  miniDots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-      updateMiniSlide(index);
-      if (miniTimer) {
-        window.clearInterval(miniTimer);
-        startMiniSlider();
-      }
-    });
-  });
-
-  startMiniSlider();
-
-  // ==================== PERFORMANCE: PASSIVE EVENT LISTENERS ====================
-  // Touch-friendly: prevent 300ms delay on mobile
+  // ==================== PERFORMANCE ====================
   document.addEventListener('touchstart', function() {}, { passive: true });
 
-  // ==================== FORM MODAL ====================
-  const formOpenBtn = document.getElementById('form-open-btn');
-  const formCloseBtn = document.getElementById('form-close-btn');
-  const contactFormModal = document.getElementById('contact-form-modal');
-  const formModalOverlay = document.getElementById('form-modal-overlay');
-  const inspectionForm = document.getElementById('inspection-form');
-
-  if (formOpenBtn && contactFormModal) {
-    formOpenBtn.addEventListener('click', () => {
-      contactFormModal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    });
-  }
-
-  if (formCloseBtn && contactFormModal) {
-    formCloseBtn.addEventListener('click', () => {
-      contactFormModal.style.display = 'none';
-      document.body.style.overflow = '';
-    });
-  }
-
-  if (formModalOverlay && contactFormModal) {
-    formModalOverlay.addEventListener('click', () => {
-      contactFormModal.style.display = 'none';
-      document.body.style.overflow = '';
-    });
-  }
-
-  // Close modal on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && contactFormModal && contactFormModal.style.display !== 'none') {
-      contactFormModal.style.display = 'none';
-      document.body.style.overflow = '';
-    }
-  });
-
-  // ==================== FORM SUBMISSION ====================
-  if (inspectionForm) {
-    inspectionForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData(inspectionForm);
-      const message = `New Site Inspection Request:\n\nName: ${formData.get('name')}\nPhone: ${formData.get('phone')}\nEmail: ${formData.get('email') || 'N/A'}\nArea: ${formData.get('area')}\nService: ${formData.get('service')}\nMessage: ${formData.get('message') || 'N/A'}`;
-      
-      // Send WhatsApp message with form data
-      const whatsappUrl = `https://wa.me/919000182240?text=${encodeURIComponent(message)}`;
-      window.open(whatsappUrl, '_blank');
-      
-      // Reset form
-      inspectionForm.reset();
-      contactFormModal.style.display = 'none';
-      document.body.style.overflow = '';
-    });
-  }
-
-  // ==================== CONSOLE BRANDING ====================
+  // ==================== CONSOLE ====================
   console.log(
     '%c🛡️ Swathi Safety Nets %c Bangalore\'s Trusted Safety Net Experts ',
-    'background: #1B5E20; color: white; padding: 8px 12px; border-radius: 4px 0 0 4px; font-weight: bold; font-size: 14px;',
-    'background: #E8F5E9; color: #1B5E20; padding: 8px 12px; border-radius: 0 4px 4px 0; font-size: 14px;'
+    'background: #1e3a8a; color: white; padding: 8px 12px; border-radius: 4px 0 0 4px; font-weight: bold; font-size: 14px;',
+    'background: #dbeafe; color: #1e3a8a; padding: 8px 12px; border-radius: 0 4px 4px 0; font-size: 14px;'
   );
-  console.log('📞 Call: +91 9000182240 | 💬 WhatsApp: wa.me/919000182240');
 
 });

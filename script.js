@@ -278,6 +278,46 @@ document.addEventListener('DOMContentLoaded', () => {
     lazyImages.forEach(img => imageObserver.observe(img));
   }
 
+  // ==================== HERO SLIDER ====================
+  const heroSlides = document.querySelectorAll('.hero-slide');
+  const sliderDots = document.querySelectorAll('.slider-dot');
+  let activeSlide = 0;
+  let sliderTimer;
+
+  const updateHeroSlide = (index) => {
+    heroSlides.forEach((slide, slideIndex) => {
+      const isActive = slideIndex === index;
+      slide.classList.toggle('active', isActive);
+    });
+    sliderDots.forEach((dot, dotIndex) => {
+      dot.classList.toggle('active', dotIndex === index);
+    });
+    activeSlide = index;
+  };
+
+  const nextHeroSlide = () => {
+    const nextIndex = (activeSlide + 1) % heroSlides.length;
+    updateHeroSlide(nextIndex);
+  };
+
+  const startHeroSlider = () => {
+    if (heroSlides.length > 1) {
+      sliderTimer = window.setInterval(nextHeroSlide, 5500);
+    }
+  };
+
+  sliderDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      updateHeroSlide(index);
+      if (sliderTimer) {
+        window.clearInterval(sliderTimer);
+        startHeroSlider();
+      }
+    });
+  });
+
+  startHeroSlider();
+
   // ==================== PERFORMANCE: PASSIVE EVENT LISTENERS ====================
   // Touch-friendly: prevent 300ms delay on mobile
   document.addEventListener('touchstart', function() {}, { passive: true });

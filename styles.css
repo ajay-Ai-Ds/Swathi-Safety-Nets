@@ -650,64 +650,6 @@ p {
   color: var(--white);
 }
 
-.hero-mini-banner {
-  display: inline-flex;
-  flex-direction: column;
-  gap: 12px;
-  max-width: 560px;
-  padding: 18px 20px;
-  background: rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  border-radius: 22px;
-  backdrop-filter: blur(14px);
-  box-shadow: 0 18px 45px rgba(10, 25, 40, 0.14);
-  margin-bottom: 20px;
-}
-
-.mini-slider {
-  position: relative;
-  min-height: 44px;
-}
-
-.mini-slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.45s ease;
-  color: var(--white);
-  font-size: clamp(0.95rem, 1vw, 1.02rem);
-  font-weight: 600;
-  line-height: 1.4;
-  display: flex;
-  align-items: center;
-}
-
-.mini-slide.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.mini-slider-controls {
-  display: flex;
-  gap: 8px;
-}
-
-.mini-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.55);
-  transition: transform 0.25s ease, background 0.25s ease;
-}
-
-.mini-dot.active,
-.mini-dot:hover {
-  background: rgba(255, 255, 255, 0.95);
-  transform: scale(1.15);
-}
-
 .hero-badge {
   display: inline-flex;
   align-items: center;

@@ -318,6 +318,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
   startHeroSlider();
 
+  const miniSlides = document.querySelectorAll('.mini-slide');
+  const miniDots = document.querySelectorAll('.mini-dot');
+  let miniActive = 0;
+  let miniTimer;
+
+  const updateMiniSlide = (index) => {
+    miniSlides.forEach((slide, slideIndex) => {
+      slide.classList.toggle('active', slideIndex === index);
+    });
+    miniDots.forEach((dot, dotIndex) => {
+      dot.classList.toggle('active', dotIndex === index);
+    });
+    miniActive = index;
+  };
+
+  const nextMiniSlide = () => {
+    const nextIndex = (miniActive + 1) % miniSlides.length;
+    updateMiniSlide(nextIndex);
+  };
+
+  const startMiniSlider = () => {
+    if (miniSlides.length > 1) {
+      miniTimer = window.setInterval(nextMiniSlide, 4200);
+    }
+  };
+
+  miniDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      updateMiniSlide(index);
+      if (miniTimer) {
+        window.clearInterval(miniTimer);
+        startMiniSlider();
+      }
+    });
+  });
+
+  startMiniSlider();
+
   // ==================== PERFORMANCE: PASSIVE EVENT LISTENERS ====================
   // Touch-friendly: prevent 300ms delay on mobile
   document.addEventListener('touchstart', function() {}, { passive: true });

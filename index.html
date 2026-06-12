@@ -223,18 +223,7 @@
 
   <!-- ==================== HERO SECTION ==================== -->
   <section class="hero" id="home">
-    <!-- Background Slider -->
-    <div class="hero-slider">
-      <div class="hero-slide active">
-        <img src="hero1.png" alt="Professional safety net installation on apartment balcony" width="1920" height="1080" loading="eager">
-      </div>
-      <div class="hero-slide">
-        <img src="hero2.png" alt="Children safety net installed on modern balcony" width="1920" height="1080" loading="lazy">
-      </div>
-      <div class="hero-slide">
-        <img src="hero3.png" alt="Industrial safety net at construction site" width="1920" height="1080" loading="lazy">
-      </div>
-    </div>
+
 
     <!-- Overlay -->
     <div class="hero-overlay"></div>
@@ -313,45 +302,7 @@
           </div>
         </div>
 
-        <!-- Right Side -->
-        <div class="hero-right">
-          <div class="hero-image-card">
-            <div class="hero-image-slider">
-              <div class="hero-image-slide active">
-                <img src="hero1.png" alt="Safety net installation" width="600" height="450" loading="eager">
-              </div>
-              <div class="hero-image-slide">
-                <img src="hero2.png" alt="Balcony safety net" width="600" height="450" loading="lazy">
-              </div>
-              <div class="hero-image-slide">
-                <img src="hero3.png" alt="Industrial safety net" width="600" height="450" loading="lazy">
-              </div>
-            </div>
-            <div class="slider-dots">
-              <div class="slider-dot active" data-slide="0"></div>
-              <div class="slider-dot" data-slide="1"></div>
-              <div class="slider-dot" data-slide="2"></div>
-            </div>
-            <div class="slider-progress" id="slider-progress"></div>
-          </div>
 
-          <!-- Stats Cards -->
-          <div class="stats-card stats-card-1">
-            <span class="stats-card-icon"><i class="fas fa-calendar-check"></i></span>
-            <div class="stats-card-value">10+</div>
-            <div class="stats-card-label">Years Experience</div>
-          </div>
-          <div class="stats-card stats-card-2">
-            <span class="stats-card-icon"><i class="fas fa-project-diagram"></i></span>
-            <div class="stats-card-value">5000+</div>
-            <div class="stats-card-label">Projects Done</div>
-          </div>
-          <div class="stats-card stats-card-3">
-            <span class="stats-card-icon"><i class="fas fa-smile-beam"></i></span>
-            <div class="stats-card-value">1250+</div>
-            <div class="stats-card-label">Happy Clients</div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -1145,5 +1096,58 @@
 
   <!-- JavaScript -->
   <script src="script.js" defer></script>
+
+  <!-- Start of Tawk.to Script -->
+  <script type="text/javascript" defer>
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  
+  // Position Tawk widget on bottom-left
+  function moveTawkWidget() {
+    var selectors = [
+      '#tawk-bubble-container',
+      '#tawk-min-container',
+      '.tawk-bubble-container',
+      '.tawk-min-container',
+      '#tawk-button-circle',
+      '.tawk-button-circle',
+      '.tawk-wrapper',
+      '#tawk-wrapper'
+    ];
+
+    selectors.forEach(function(selector) {
+      var node = document.querySelector(selector);
+      if (node) {
+        node.style.setProperty('position', 'fixed', 'important');
+        node.style.setProperty('left', 'auto', 'important');
+        node.style.setProperty('right', '20px', 'important');
+        node.style.setProperty('top', 'auto', 'important');
+        node.style.setProperty('bottom', '160px', 'important');
+        node.style.setProperty('margin', '0', 'important');
+        node.style.setProperty('transform', 'none', 'important');
+        node.style.setProperty('z-index', '10001', 'important');
+        node.style.setProperty('pointer-events', 'auto', 'important');
+      }
+    });
+  }
+
+  Tawk_API.onLoad = function(){
+    moveTawkWidget();
+    setTimeout(moveTawkWidget, 500);
+    setTimeout(moveTawkWidget, 1500);
+    setTimeout(moveTawkWidget, 3000);
+  };
+  
+  window.addEventListener('load', moveTawkWidget);
+  
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/6a2a21c6135ef41c3064d0ea/1jqq97svv';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!-- End of Tawk.to Script -->
 </body>
 </html>

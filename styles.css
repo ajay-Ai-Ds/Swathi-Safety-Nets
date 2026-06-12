@@ -1297,8 +1297,6 @@ p {
 .faq-list {
   max-width: 800px;
   margin: 0 auto;
-}
-
 .faq-item {
   background: var(--white);
   border: 1px solid var(--gray-200);

@@ -654,7 +654,6 @@ button {
 
 /* ===== MOBILE MENU OVERLAY ===== */
 .mobile-menu-overlay {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -665,11 +664,15 @@ button {
   -webkit-backdrop-filter: blur(4px);
   z-index: 1049;
   opacity: 0;
-  transition: opacity var(--transition-base);
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--transition-base), visibility var(--transition-base);
 }
 
 .mobile-menu-overlay.visible {
   opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 /* ===== MOBILE NAV PANEL ===== */
@@ -685,13 +688,15 @@ button {
   background: linear-gradient(180deg, #0f172a 0%, #1e3a8a 100%);
   z-index: 1050;
   transform: translateX(100%);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  visibility: hidden;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 
 .mobile-nav.open {
   transform: translateX(0);
+  visibility: visible;
 }
 
 .mobile-nav-header {
@@ -1022,15 +1027,21 @@ button {
 }
 
 .hero-content .container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 /* Hero Left */
 .hero-left {
-  animation: fadeInLeft 1s ease-out 0.3s both;
+  animation: fadeInUp 1s ease-out 0.3s both;
+  max-width: 840px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero-badge {
@@ -1086,13 +1097,16 @@ button {
   line-height: 1.7;
   color: rgba(255,255,255,0.7);
   margin-bottom: 36px;
-  max-width: 540px;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
   font-weight: 400;
 }
 
 .hero-buttons {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 14px;
   margin-bottom: 48px;
 }
@@ -1121,6 +1135,7 @@ button {
 .hero-trust {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 32px;
 }
 
@@ -1174,9 +1189,11 @@ button {
 }
 
 .hero-image-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  position: relative;
 }
 
 .hero-image-slide {
@@ -1323,6 +1340,41 @@ button {
 
 /* ===== RESPONSIVE: TABLET ===== */
 @media (max-width: 1024px) {
+  :root {
+    --header-height: 68px;
+    --topbar-height: 38px;
+  }
+
+  /* Header mobile menu activation at 1024px */
+  .main-nav {
+    display: none;
+  }
+
+  .header-cta {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .mobile-nav {
+    display: block;
+  }
+
+  .logo-img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .logo-text h1 {
+    font-size: 19px;
+  }
+
+  .logo-text span {
+    font-size: 11px;
+  }
+
   .hero-content .container {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -1352,6 +1404,8 @@ button {
   .hero-right {
     max-width: 520px;
     margin: 0 auto;
+    width: 100%;
+    position: relative;
   }
 
   .topbar-left .topbar-item:nth-child(n+4) {
@@ -1365,11 +1419,6 @@ button {
 
 /* ===== RESPONSIVE: MOBILE ===== */
 @media (max-width: 768px) {
-  :root {
-    --header-height: 68px;
-    --topbar-height: 38px;
-  }
-
   .topbar {
     font-size: 12px;
   }
@@ -1393,27 +1442,6 @@ button {
 
   .topbar-right {
     display: none;
-  }
-
-  /* Header mobile */
-  .main-nav {
-    display: none;
-  }
-
-  .header-cta {
-    display: none;
-  }
-
-  .hamburger {
-    display: flex;
-  }
-
-  .mobile-nav {
-    display: block;
-  }
-
-  .mobile-menu-overlay {
-    display: block;
   }
 
   .logo-img {
@@ -1495,9 +1523,12 @@ button {
     font-size: 13px;
   }
 
-  /* Hero Image Card Mobile */
+  /* Hero Image Card Mobile - Capped at 480px and centered to align stats cards perfectly */
   .hero-right {
-    max-width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
   }
 
   .hero-image-card {
@@ -1538,10 +1569,7 @@ button {
     right: 16px;
   }
 
-  /* Mobile sticky CTA */
-  .mobile-sticky-cta {
-    display: block;
-  }
+  /* Gradient orbs smaller on mobile */
 
   /* Gradient orbs smaller on mobile */
   .hero-orb-1 {
@@ -2316,7 +2344,10 @@ button {
 /* ===== FLOATING BUTTONS ===== */
 .floating-buttons {
   position: fixed;
-  inset: 0;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
   z-index: 9999;
   pointer-events: none;
 }
@@ -2589,7 +2620,7 @@ button {
     gap: 30px;
   }
 
-  /* Floating Buttons Mobile */
+  /* Floating Buttons Mobile - Positioned cleanly without overlapping */
   .float-btn {
     width: 52px;
     height: 52px;
@@ -2597,14 +2628,15 @@ button {
   }
 
   .scroll-top {
-    bottom: 90px;
-    right: 16px;
+    bottom: 20px;
+    right: 20px;
     width: 40px;
     height: 40px;
   }
 
   #float-call {
     bottom: 80px;
+    right: 20px;
   }
 }
 

@@ -316,6 +316,70 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==================== PERFORMANCE ====================
   document.addEventListener('touchstart', function() {}, { passive: true });
 
+  // ==================== HERO TOP CAROUSEL ====================
+  const carouselTrack = document.querySelector('.carousel-track');
+  const carouselSlides = Array.from(document.querySelectorAll('.carousel-slide'));
+  const nextButton = document.querySelector('.carousel-btn-right');
+  const prevButton = document.querySelector('.carousel-btn-left');
+  const indicators = Array.from(document.querySelectorAll('.carousel-indicator'));
+
+  let carouselIndex = 0;
+  const carouselInterval = 3000; // Slide every 3 seconds!
+  let carouselTimer;
+
+  function updateCarousel(targetIndex) {
+    if (carouselSlides.length === 0) return;
+    
+    // Remove active classes
+    carouselSlides[carouselIndex].classList.remove('current-slide');
+    indicators[carouselIndex].classList.remove('current-slide');
+    
+    // Set new index
+    carouselIndex = (targetIndex + carouselSlides.length) % carouselSlides.length;
+    
+    // Add active classes
+    carouselSlides[carouselIndex].classList.add('current-slide');
+    indicators[carouselIndex].classList.add('current-slide');
+  }
+
+  function nextCarouselSlide() {
+    updateCarousel(carouselIndex + 1);
+  }
+
+  function startCarouselTimer() {
+    clearInterval(carouselTimer);
+    carouselTimer = setInterval(nextCarouselSlide, carouselInterval);
+  }
+
+  if (carouselSlides.length > 1) {
+    // Next Button click
+    if (nextButton) {
+      nextButton.addEventListener('click', () => {
+        updateCarousel(carouselIndex + 1);
+        startCarouselTimer(); // Reset timer on click
+      });
+    }
+
+    // Prev Button click
+    if (prevButton) {
+      prevButton.addEventListener('click', () => {
+        updateCarousel(carouselIndex - 1);
+        startCarouselTimer(); // Reset timer on click
+      });
+    }
+
+    // Dot navigation click
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        updateCarousel(index);
+        startCarouselTimer(); // Reset timer on click
+      });
+    });
+
+    // Start auto slide
+    startCarouselTimer();
+  }
+
   // ==================== CONSOLE ====================
   console.log(
     '%c🛡️ Swathi Safety Nets %c Bangalore\'s Trusted Safety Net Experts ',

@@ -1385,9 +1385,16 @@ button {
   }
 
   .logo-img {
-    width: 44px;
-    height: 44px;
+  width: 56px;
+  height: 56px;
+}
+
+@media (max-width: 768px) {
+  .logo-img {
+    width: 80px;
+    height: 80px;
   }
+}
 
   .logo-text h1 {
     font-size: 19px;
@@ -1467,8 +1474,8 @@ button {
   }
 
   .logo-img {
-    width: 42px;
-    height: 42px;
+    width: 54px;
+    height: 54px;
   }
 
   .logo-text h1 {

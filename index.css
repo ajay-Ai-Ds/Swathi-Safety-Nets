@@ -2902,6 +2902,63 @@ button {
   border-radius: var(--radius-full);
 }
 
+/* Floating Call Button in Carousel */
+.carousel-float-call {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 20;
+  min-width: 160px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background: #25d366;
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+  transition: all var(--transition-base);
+  animation: carousel-pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  white-space: nowrap;
+}
+
+.carousel-float-call i {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.carousel-float-call span {
+  letter-spacing: 0.3px;
+}
+
+.carousel-float-call:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+  animation: none;
+}
+
+.carousel-float-call:active {
+  transform: scale(0.95);
+}
+
+@keyframes carousel-pulse {
+  0% {
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.6);
+  }
+  100% {
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+  }
+}
+
 /* Mobile responsive carousel */
 @media (max-width: 768px) {
   .hero-carousel {

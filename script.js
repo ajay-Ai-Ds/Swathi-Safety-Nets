@@ -328,18 +328,21 @@ document.addEventListener('DOMContentLoaded', () => {
   let carouselTimer;
 
   function updateCarousel(targetIndex) {
-    if (carouselSlides.length === 0) return;
-    
-    // Remove active classes
-    carouselSlides[carouselIndex].classList.remove('current-slide');
-    indicators[carouselIndex].classList.remove('current-slide');
+    if (carouselSlides.length === 0 || !carouselTrack) return;
     
     // Set new index
     carouselIndex = (targetIndex + carouselSlides.length) % carouselSlides.length;
     
-    // Add active classes
-    carouselSlides[carouselIndex].classList.add('current-slide');
-    indicators[carouselIndex].classList.add('current-slide');
+    const offset = -carouselIndex * 100;
+    carouselTrack.style.transform = `translateX(${offset}%)`;
+
+    // Update dots
+    carouselSlides.forEach((slide, index) => {
+      slide.classList.toggle('current-slide', index === carouselIndex);
+    });
+    indicators.forEach((dot, index) => {
+      dot.classList.toggle('current-slide', index === carouselIndex);
+    });
   }
 
   function nextCarouselSlide() {
@@ -378,6 +381,101 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Start auto slide
     startCarouselTimer();
+  }
+
+  // ==================== PREMIUM SERVICES CAROUSEL ====================
+  const serviceCarouselShell = document.querySelector('.services-carousel-shell');
+
+  if (serviceCarouselShell) {
+    const slides = Array.from(serviceCarouselShell.querySelectorAll('.services-slide'));
+    const prevBtn = serviceCarouselShell.querySelector('.services-carousel-btn-prev');
+    const nextBtn = serviceCarouselShell.querySelector('.services-carousel-btn-next');
+    const dots = Array.from(serviceCarouselShell.querySelectorAll('.services-carousel-dot'));
+
+    let serviceIndex = 0;
+    let serviceAutoplayTimer;
+    let isCarouselPaused = false;
+    let touchStartX = 0;
+
+    function setServiceSlide(index, resetTimer = true) {
+      if (slides.length === 0) return;
+
+      serviceIndex = (index + slides.length) % slides.length;
+
+      slides.forEach((slide, slideIdx) => {
+        slide.classList.toggle('active', slideIdx === serviceIndex);
+        slide.setAttribute('aria-hidden', slideIdx === serviceIndex ? 'false' : 'true');
+      });
+
+      dots.forEach((dot, dotIdx) => {
+        dot.classList.toggle('active', dotIdx === serviceIndex);
+        dot.setAttribute('aria-current', dotIdx === serviceIndex ? 'true' : 'false');
+      });
+
+      if (resetTimer) {
+        restartServiceAutoplay();
+      }
+    }
+
+    function showNextService() {
+      setServiceSlide(serviceIndex + 1, true);
+    }
+
+    function showPrevService() {
+      setServiceSlide(serviceIndex - 1, true);
+    }
+
+    function startServiceAutoplay() {
+      clearInterval(serviceAutoplayTimer);
+      if (slides.length < 2 || isCarouselPaused) return;
+      serviceAutoplayTimer = setInterval(showNextService, 3000);
+    }
+
+    function restartServiceAutoplay() {
+      startServiceAutoplay();
+    }
+
+    serviceCarouselShell.addEventListener('mouseenter', () => {
+      isCarouselPaused = true;
+      clearInterval(serviceAutoplayTimer);
+    });
+
+    serviceCarouselShell.addEventListener('mouseleave', () => {
+      isCarouselPaused = false;
+      startServiceAutoplay();
+    });
+
+    prevBtn?.addEventListener('click', () => {
+      showPrevService();
+    });
+
+    nextBtn?.addEventListener('click', () => {
+      showNextService();
+    });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        setServiceSlide(index, true);
+      });
+    });
+
+    serviceCarouselShell.addEventListener('touchstart', (event) => {
+      touchStartX = event.touches[0].clientX;
+    }, { passive: true });
+
+    serviceCarouselShell.addEventListener('touchend', (event) => {
+      const touchEndX = event.changedTouches[0].clientX;
+      const delta = touchEndX - touchStartX;
+
+      if (delta > 50) {
+        showPrevService();
+      } else if (delta < -50) {
+        showNextService();
+      }
+    }, { passive: true });
+
+    setServiceSlide(0, false);
+    startServiceAutoplay();
   }
 
   // ==================== CONSOLE ====================

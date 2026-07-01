@@ -180,31 +180,39 @@ document.addEventListener('DOMContentLoaded', () => {
   const counters = document.querySelectorAll('.counter');
   let countersAnimated = false;
 
-  function animateCounters() {
-    if (countersAnimated) return;
+  function animateCounters(force = false) {
+    if (!counters.length) return;
+    if (countersAnimated && !force) return;
     countersAnimated = true;
 
     counters.forEach(counter => {
-      const target = parseInt(counter.getAttribute('data-target'));
-      const duration = 2000;
-      const step = target / (duration / 16);
-      let current = 0;
+      const rawTarget = counter.getAttribute('data-target');
+      const target = parseInt(rawTarget, 10);
+      if (Number.isNaN(target)) return;
 
-      const updateCounter = () => {
-        current += step;
-        if (current < target) {
-          counter.textContent = Math.floor(current).toLocaleString();
+      const duration = 1800;
+      const startTime = performance.now();
+      counter.textContent = '0';
+
+      const updateCounter = (timestamp) => {
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = Math.floor(target * eased);
+        counter.textContent = value.toLocaleString();
+
+        if (progress < 1) {
           requestAnimationFrame(updateCounter);
         } else {
           counter.textContent = target.toLocaleString();
         }
       };
-      updateCounter();
+
+      requestAnimationFrame(updateCounter);
     });
   }
 
   const statsBar = document.querySelector('.stats-bar');
-  if (statsBar) {
+  if (statsBar && 'IntersectionObserver' in window) {
     const statsObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -215,6 +223,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.3 });
     statsObserver.observe(statsBar);
   }
+
+  window.setTimeout(() => {
+    if (!countersAnimated) {
+      animateCounters(true);
+    }
+  }, 400);
+
+  window.addEventListener('load', () => {
+    if (!countersAnimated) {
+      animateCounters(true);
+    }
+  });
 
   // ==================== FAQ ACCORDION ====================
   const faqItems = document.querySelectorAll('.faq-item');

@@ -51,31 +51,14 @@
     gtag('config', 'AW-18236873107');
   </script>
   <script>
-    function gtag_report_conversion(url) {
-      var callback = function () {
-        if (typeof(url) != 'undefined') {
-          window.location = url;
-        }
-      };
-      gtag('event', 'conversion', {
-          'send_to': 'AW-18236873107/lgp8CLzY-cAcEJOzgvhD',
-          'event_callback': callback
-      });
-      return false;
-    }
-  </script>
-  <script>
     document.addEventListener('DOMContentLoaded', function () {
-      var conversionLinks = document.querySelectorAll('a[href^="tel:"], a[href^="https://wa.me/"], a[href^="http://wa.me/"]');
+      var conversionLinks = document.querySelectorAll('a[href^="tel:"]');
       conversionLinks.forEach(function (link) {
         if (link.getAttribute('data-gtag-conversion-bound') === 'true') return;
         link.setAttribute('data-gtag-conversion-bound', 'true');
-        link.addEventListener('click', function (event) {
-          var url = link.getAttribute('href');
-          if (!url) return;
-          event.preventDefault();
-          gtag_report_conversion(url);
-        });
+        if (!link.hasAttribute('onclick')) {
+          link.setAttribute('onclick', "return gtag_report_conversion('" + link.getAttribute('href') + "');");
+        }
       });
     });
   </script>
@@ -830,6 +813,22 @@
   s1.async=true; s1.src='https://embed.tawk.to/6a2a21c6135ef41c3064d0ea/1jqq97svv'; s1.charset='UTF-8';
   s1.setAttribute('crossorigin','*'); s0.parentNode.insertBefore(s1,s0);
   })();
+  </script>
+
+  <!-- Google Ads conversion helper: replace REPLACE_WITH_LABEL with the label from Google Ads -->
+  <script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+      'send_to': 'AW-18236873107/REPLACE_WITH_LABEL',
+      'event_callback': callback
+    });
+    return false;
+  }
   </script>
 </body>
 </html>

@@ -39,20 +39,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==================== HEADER SCROLL EFFECT ====================
   const mainHeader = document.getElementById('main-header');
   const topbar = document.getElementById('topbar');
-  const scrollProgress = document.getElementById('scroll-progress');
 
   let lastScroll = 0;
   let topbarHidden = false;
 
   window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = (currentScroll / docHeight) * 100;
-
-    // Scroll progress bar
-    if (scrollProgress) {
-      scrollProgress.style.width = scrollPercent + '%';
-    }
 
     // Header solid on scroll
     if (mainHeader) {
@@ -180,35 +172,39 @@ document.addEventListener('DOMContentLoaded', () => {
   const counters = document.querySelectorAll('.counter');
   let countersAnimated = false;
 
+  function animateCounter(counter) {
+    const rawTarget = counter.getAttribute('data-target');
+    const target = Number.parseInt(rawTarget, 10);
+    if (Number.isNaN(target)) return;
+
+    const duration = 1800;
+    let startTime = null;
+    counter.textContent = '0';
+
+    const updateCounter = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = Math.floor(target * eased);
+      counter.textContent = value.toLocaleString();
+
+      if (progress < 1) {
+        requestAnimationFrame(updateCounter);
+      } else {
+        counter.textContent = target.toLocaleString();
+      }
+    };
+
+    requestAnimationFrame(updateCounter);
+  }
+
   function animateCounters(force = false) {
     if (!counters.length) return;
     if (countersAnimated && !force) return;
+
     countersAnimated = true;
-
-    counters.forEach(counter => {
-      const rawTarget = counter.getAttribute('data-target');
-      const target = parseInt(rawTarget, 10);
-      if (Number.isNaN(target)) return;
-
-      const duration = 1800;
-      const startTime = performance.now();
-      counter.textContent = '0';
-
-      const updateCounter = (timestamp) => {
-        const progress = Math.min((timestamp - startTime) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        const value = Math.floor(target * eased);
-        counter.textContent = value.toLocaleString();
-
-        if (progress < 1) {
-          requestAnimationFrame(updateCounter);
-        } else {
-          counter.textContent = target.toLocaleString();
-        }
-      };
-
-      requestAnimationFrame(updateCounter);
-    });
+    counters.forEach(counter => animateCounter(counter));
   }
 
   const statsBar = document.querySelector('.stats-bar');
@@ -221,6 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }, { threshold: 0.3 });
+
     statsObserver.observe(statsBar);
   }
 

@@ -1555,7 +1555,12 @@ p {
 /* ---------- Floating Buttons ---------- */
 .floating-buttons {
   position: fixed;
-  inset: 0;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
   z-index: 9999;
   pointer-events: none;
 }
@@ -1571,19 +1576,14 @@ p {
   color: var(--white);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
   transition: var(--transition-spring);
-  position: fixed;
+  position: relative;
   z-index: 9999;
   pointer-events: auto;
 }
 
-#float-whatsapp {
-  left: 20px;
-  bottom: 20px;
-}
-
+#float-whatsapp,
 #float-call {
-  right: 20px;
-  bottom: 90px;
+  position: relative;
 }
 
 .float-btn:hover {
@@ -2114,7 +2114,7 @@ p {
 
   /* Floating Buttons Mobile */
   .floating-buttons {
-    bottom: 20px;
+    bottom: 16px;
     right: 16px;
   }
 
@@ -2133,12 +2133,6 @@ p {
     left: 16px;
     width: 40px;
     height: 40px;
-  }
-
-  /* Tawk Mobile Positioning */
-  .tawk-min-container {
-    bottom: 20px !important;
-    left: 16px !important;
   }
 
   .section-header {
@@ -2187,12 +2181,6 @@ p {
 
   .hero-subtitle {
     font-size: 0.9rem;
-  }
-
-  /* Tawk Small Mobile Positioning */
-  .tawk-min-container {
-    bottom: 16px !important;
-    left: 12px !important;
   }
 
   .scroll-top {
@@ -2446,51 +2434,6 @@ p {
     top: 12px;
     right: 12px;
   }
-}
-
-/* ==================== TAWK.TO WIDGET POSITIONING ==================== */
-/* Repositioning Tawk widget to bottom-right above floating buttons */
-#tawk-bubble-container,
-#tawk-min-container,
-.tawk-bubble-container,
-.tawk-min-container,
-#tawk-button-circle,
-.tawk-button-circle,
-.tawk-wrapper,
-#tawk-wrapper {
-  position: fixed !important;
-  left: auto !important;
-  right: 20px !important;
-  top: auto !important;
-  bottom: 160px !important;
-  margin: 0 !important;
-  transform: none !important;
-  z-index: 10001 !important;
-  pointer-events: auto !important;
-}
-
-/* Add explicit fallback for the minimized Tawk container */
-.tawk-min-container {
-  bottom: 160px !important;
-  right: 20px !important;
-}
-
-/* Adjust scroll-to-top button to avoid overlap with Tawk on right side */
-.scroll-top {
-  bottom: 110px;
-  left: 24px;
-}
-
-/* Ensure proper spacing between floating buttons and Tawk */
-.floating-buttons {
-  inset: 0;
-}
-
-/* Ensure Tawk iframe and elements don't interfere */
-#tawk-iframe,
-.tawk-iframe {
-  z-index: 10001 !important;
-  pointer-events: auto !important;
 }
 
 /* ==================== PREFERS REDUCED MOTION ==================== */

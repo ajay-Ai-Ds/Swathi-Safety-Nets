@@ -1418,59 +1418,6 @@
   <!-- JavaScript -->
   <script src="script.js" defer></script>
 
-  <!-- Start of Tawk.to Script -->
-  <script type="text/javascript" defer>
-  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  
-  // Position Tawk widget on bottom-left
-  function moveTawkWidget() {
-    var selectors = [
-      '#tawk-bubble-container',
-      '#tawk-min-container',
-      '.tawk-bubble-container',
-      '.tawk-min-container',
-      '#tawk-button-circle',
-      '.tawk-button-circle',
-      '.tawk-wrapper',
-      '#tawk-wrapper'
-    ];
-
-    selectors.forEach(function(selector) {
-      var node = document.querySelector(selector);
-      if (node) {
-        node.style.setProperty('position', 'fixed', 'important');
-        node.style.setProperty('left', 'auto', 'important');
-        node.style.setProperty('right', '20px', 'important');
-        node.style.setProperty('top', 'auto', 'important');
-        node.style.setProperty('bottom', '160px', 'important');
-        node.style.setProperty('margin', '0', 'important');
-        node.style.setProperty('transform', 'none', 'important');
-        node.style.setProperty('z-index', '10001', 'important');
-        node.style.setProperty('pointer-events', 'auto', 'important');
-      }
-    });
-  }
-
-  Tawk_API.onLoad = function(){
-    moveTawkWidget();
-    setTimeout(moveTawkWidget, 500);
-    setTimeout(moveTawkWidget, 1500);
-    setTimeout(moveTawkWidget, 3000);
-  };
-  
-  window.addEventListener('load', moveTawkWidget);
-  
-  (function(){
-  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/6a2a21c6135ef41c3064d0ea/1jqq97svv';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
-  })();
-  </script>
-  <!-- End of Tawk.to Script -->
-
   <!-- Google Ads conversion helper -->
   <script>
   function gtag_report_conversion(url) {

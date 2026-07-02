@@ -38,12 +38,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://www.google-analytics.com">
 
   <!-- Preload hero image -->
-  <link rel="preload" as="image" href="hero1.png">
+  <link rel="preload" as="image" href="images/pigeon.webp" type="image/webp">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Font Awesome 6 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="index.css">
@@ -58,7 +63,7 @@
     "@id": "https://www.swathisafetynets.com",
     "url": "https://www.swathisafetynets.com",
     "telephone": "+919000182240",
-    "email": "info@swathisafetynets.com",
+    "email": "info.swathisafetynets@gmail.com",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Bangalore",
@@ -101,6 +106,56 @@
       });
     });
   </script>
+
+  <!-- FAQ Schema (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What are safety nets made of?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our safety nets are made from high-quality HDPE (High-Density Polyethylene) and nylon materials. These materials are UV-stabilized, weather-resistant, and provide exceptional tensile strength for long-lasting protection. We use only ISI-certified materials."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long do safety nets last in Bangalore's climate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "High-quality HDPE safety nets typically last 5-8 years with proper maintenance, even in Bangalore's tropical climate. Nylon nets last 3-5 years. Our UV-stabilized materials withstand heavy monsoon rains, intense sunlight, and strong winds."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much do safety nets cost in Bangalore?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pigeon nets range from ₹8-15 per sq ft, balcony safety nets from ₹10-20 per sq ft, and heavy-duty construction nets from ₹15-30 per sq ft. Contact us at +91 9000182240 for a free site inspection and accurate quote — no hidden charges!"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you provide free site inspection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! Swathi Safety Nets provides completely free site inspection across all areas of Bangalore including Whitefield, Marathahalli, HSR Layout, Electronic City, Koramangala, and more. Our expert team will visit, take measurements, and provide a detailed quotation at absolutely no cost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are safety nets safe for children?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely! Our children safety nets can withstand up to 80 kg of weight and impact. They meet international safety standards and are used in high-rise apartments across Bangalore. The nets are non-toxic and completely child-friendly."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -118,9 +173,9 @@
           <span>WhatsApp</span>
         </a>
         <div class="topbar-divider"></div>
-        <a href="mailto:info@swathisafetynets.com" class="topbar-item" id="topbar-email">
+        <a href="mailto:info.swathisafetynets@gmail.com" class="topbar-item" id="topbar-email">
           <i class="fas fa-envelope"></i>
-          <span>info@swathisafetynets.com</span>
+          <span>info.swathisafetynets@gmail.com</span>
         </a>
         <div class="topbar-divider"></div>
         <div class="topbar-item">
@@ -144,7 +199,7 @@
     <div class="container">
       <!-- Logo -->
       <a href="#home" class="logo-group" aria-label="Swathi Safety Nets Home">
-        <img src="images/swathilogo1.jpg" alt="Swathi Safety Nets Logo" class="logo-img" width="80" height="80" loading="eager">
+        <img src="images/swathilogo1.webp" alt="Swathi Safety Nets Logo" class="logo-img" width="80" height="80" loading="eager">
         <div class="logo-text">
           <h1>Swathi Safety Nets</h1>
           <span>Bangalore's Trusted Safety Experts</span>
@@ -189,7 +244,7 @@
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile Navigation">
     <div class="mobile-nav-header">
       <div class="mobile-nav-logo">
-        <img src="images/swathilogo1.jpg" alt="Logo" width="60" height="60" loading="lazy">
+        <img src="images/swathilogo1.webp" alt="Logo" width="60" height="60" loading="lazy">
         <div class="mobile-nav-logo-text">
           <h3>Swathi Safety Nets</h3>
           <span>Safety Experts</span>
@@ -225,7 +280,7 @@
       </div>
       <div class="mobile-nav-contact-item">
         <i class="fas fa-envelope"></i>
-        <span>info@swathisafetynets.com</span>
+        <span>info.swathisafetynets@gmail.com</span>
       </div>
       <div class="mobile-nav-contact-item">
         <i class="fas fa-map-marker-alt"></i>
@@ -288,7 +343,7 @@
                   <span class="carousel-caption">Pigeon Safety Nets</span>
                 </li>
                 <li class="carousel-slide">
-                  <img src="images/net.jpeg" alt="Balcony Safety Nets Bangalore" width="640" height="360" loading="lazy">
+                  <img src="images/net.webp" alt="Balcony Safety Nets Bangalore" width="640" height="360" loading="lazy">
                   <a href="tel:+919000182240" class="carousel-float-call" aria-label="Call Swathi Safety Nets">
                     <i class="fas fa-phone-alt"></i>
                     <span>9000182240</span>
@@ -328,7 +383,7 @@
                   <span class="carousel-caption">Coconut Tree Safety Nets</span>
                 </li>
                 <li class="carousel-slide">
-                  <img src="images/industrial.jpg" alt="Industrial Safety Nets Bangalore" width="640" height="360" loading="lazy">
+                  <img src="images/industrial.webp" alt="Industrial Safety Nets Bangalore" width="640" height="360" loading="lazy">
                   <a href="tel:+919000182240" class="carousel-float-call" aria-label="Call Swathi Safety Nets">
                     <i class="fas fa-phone-alt"></i>
                     <span>9000182240</span>
@@ -336,7 +391,7 @@
                   <span class="carousel-caption">Industrial Safety Nets</span>
                 </li>
                 <li class="carousel-slide">
-                  <img src="images/cricket.jpeg" alt="Cricket Practice Nets Bangalore" width="640" height="360" loading="lazy">
+                  <img src="images/cricket.webp" alt="Cricket Practice Nets Bangalore" width="640" height="360" loading="lazy">
                   <a href="tel:+919000182240" class="carousel-float-call" aria-label="Call Swathi Safety Nets">
                     <i class="fas fa-phone-alt"></i>
                     <span>9000182240</span>
@@ -484,7 +539,7 @@
             <h3>Balcony Safety Nets</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/net.jpeg" alt="Balcony Safety Nets" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
+            <img src="images/net.webp" alt="Balcony Safety Nets" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
           </div>
           <div class="service-card-body">
             <p>Secure your balconies with premium HDPE safety nets. Perfect for high-rise apartments to prevent accidents and ensure family safety.</p>
@@ -553,7 +608,7 @@
             <h3>Bird Protection Nets</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/bird.jpg" alt="Bird Protection Nets" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
+            <img src="images/bird.webp" alt="Bird Protection Nets" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
           </div>
           <div class="service-card-body">
             <p>Comprehensive bird protection for homes, offices, and agricultural areas. Humane and effective.</p>
@@ -576,7 +631,7 @@
             <h3>Anti Bird Safety Nets</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/antibirdnet.jpg" alt="Anti Bird Safety Nets" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
+            <img src="images/antibirdnet.webp" alt="Anti Bird Safety Nets" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
           </div>
           <div class="service-card-body">
             <p>Specialized anti-bird safety nets to prevent bird entry, nesting, and droppings on balconies, terraces, and open spaces. Durable, humane, and near-invisible installation for cleaner surroundings.</p>
@@ -599,7 +654,7 @@
             <h3>Cricket Practice Nets</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/cricket.jpeg" alt="Cricket Practice Nets" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
+            <img src="images/cricket.webp" alt="Cricket Practice Nets" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
           </div>
           <div class="service-card-body">
             <p>Professional-grade cricket practice nets for academies, clubs, and home setups. Durable and weather-resistant.</p>
@@ -645,7 +700,7 @@
             <h3>Pigeon Spikes</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/spikes.jpg" alt="Pigeon Spikes" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
+            <img src="images/spikes.webp" alt="Pigeon Spikes" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
           </div>
           <div class="service-card-body">
             <p>Effective pigeon spikes to deter birds from roosting on ledges, pipes and rooftops. Durable stainless-steel spikes for humane bird control.</p>
@@ -668,7 +723,7 @@
             <h3>Mosquito Safety Net</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/mosquitonet.jpg" alt="Mosquito Safety Net" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
+            <img src="images/mosquitonet.webp" alt="Mosquito Safety Net" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
           </div>
           <div class="service-card-body">
             <p>Fine-mesh mosquito safety nets to protect against insects while maintaining airflow. Ideal for windows, doors, and balconies.</p>
@@ -737,7 +792,7 @@
             <h3>Industrial Safety Nets</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/industrial.jpg" alt="Industrial Safety Nets Bangalore" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
+            <img src="images/industrial.webp" alt="Industrial Safety Nets Bangalore" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
           </div>
           <div class="service-card-body">
             <p>Heavy-duty safety nets for industrial facilities, warehouses, and factories. Meeting all industrial safety requirements and protecting your workforce.</p>
@@ -760,7 +815,7 @@
             <h3>Monkey Safety Nets</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/monkey.jpeg" alt="Monkey Safety Nets Bangalore" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
+            <img src="images/monkey.webp" alt="Monkey Safety Nets Bangalore" loading="lazy" width="300" height="200" decoding="async" style="object-fit: cover;">
           </div>
           <div class="service-card-body">
             <p>Keep monkeys away from your home and garden with our specially designed monkey safety nets. Strong, tamper-proof, and built to withstand aggressive pulling.</p>
@@ -776,6 +831,87 @@
           </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PRICE CALCULATOR SECTION ==================== -->
+  <section class="calculator-section section" id="estimator" style="background: var(--gray-50); border-top: 1px solid var(--gray-200); padding: 80px 0;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label"><i class="fas fa-calculator" style="color: var(--blue-600);"></i> Price Estimator</span>
+        <h2>Instant Cost Estimator</h2>
+        <p>Get a quick, transparent cost range for your installation needs. Lock in your price and book a free site measurement today!</p>
+      </div>
+
+      <div class="calculator-wrapper reveal" style="max-width: 900px; margin: 40px auto 0; display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-xl); overflow: hidden; border: 1px solid var(--gray-200);">
+        <div class="calc-card" style="padding: 40px; border-right: 1px solid var(--gray-100);">
+          <form id="calc-form" onsubmit="event.preventDefault();">
+            <div class="form-group" style="margin-bottom: 20px;">
+              <label for="calc-service" style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--gray-800); font-size: 0.95rem;"><i class="fas fa-th-list" style="margin-right: 6px; color: var(--blue-600);"></i> Select Service</label>
+              <select id="calc-service" required style="width: 100%; padding: 12px; border: 1px solid var(--gray-300); border-radius: var(--radius-sm); font-size: 0.95rem; font-family: var(--font-body); color: var(--gray-700); background: var(--gray-50); cursor: pointer; outline: none; transition: border-color var(--transition-fast);">
+                <option value="" disabled selected>-- Choose a Service --</option>
+                <option value="pigeon" data-min="9" data-max="15">Pigeon Safety Nets (₹9 - ₹15 / sq ft)</option>
+                <option value="balcony" data-min="11" data-max="20">Balcony Safety Nets (₹11 - ₹20 / sq ft)</option>
+                <option value="invisible-grill" data-min="90" data-max="140">Invisible Grills (₹90 - ₹140 / sq ft)</option>
+                <option value="cricket" data-min="13" data-max="22">Cricket Practice Nets (₹13 - ₹22 / sq ft)</option>
+                <option value="child-pet" data-min="11" data-max="20">Children & Pet Safety Nets (₹11 - ₹20 / sq ft)</option>
+                <option value="cloth-hanger" data-min="0" data-max="0">Ceiling Cloth Hangers (Rod based pricing)</option>
+              </select>
+            </div>
+
+            <!-- Dimensions inputs (Width & Height) -->
+            <div class="dimensions-inputs" id="dim-inputs-block" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+              <div class="form-group">
+                <label for="calc-width" style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--gray-800); font-size: 0.95rem;"><i class="fas fa-arrows-left-right" style="margin-right: 6px; color: var(--blue-600);"></i> Width (Feet)</label>
+                <input type="number" id="calc-width" min="1" placeholder="e.g., 10" style="width: 100%; padding: 12px; border: 1px solid var(--gray-300); border-radius: var(--radius-sm); font-size: 0.95rem; outline: none; transition: border-color var(--transition-fast);">
+              </div>
+              <div class="form-group">
+                <label for="calc-height" style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--gray-800); font-size: 0.95rem;"><i class="fas fa-arrows-up-down" style="margin-right: 6px; color: var(--blue-600);"></i> Height (Feet)</label>
+                <input type="number" id="calc-height" min="1" placeholder="e.g., 8" style="width: 100%; padding: 12px; border: 1px solid var(--gray-300); border-radius: var(--radius-sm); font-size: 0.95rem; outline: none; transition: border-color var(--transition-fast);">
+              </div>
+            </div>
+
+            <!-- Rods dropdown for cloth hanger selection -->
+            <div class="form-group" id="rods-input-block" style="display: none; margin-bottom: 20px;">
+              <label for="calc-rods" style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--gray-800); font-size: 0.95rem;"><i class="fas fa-bars" style="margin-right: 6px; color: var(--blue-600);"></i> Number of Rods</label>
+              <select id="calc-rods" style="width: 100%; padding: 12px; border: 1px solid var(--gray-300); border-radius: var(--radius-sm); font-size: 0.95rem; background: var(--gray-50); outline: none;">
+                <option value="4" data-price="2200">4 Rods Pulley System (₹2,200)</option>
+                <option value="6" data-price="2600" selected>6 Rods Pulley System (₹2,600)</option>
+                <option value="8" data-price="3000">8 Rods Pulley System (₹3,000)</option>
+              </select>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-calc" id="btn-calculate" style="width: 100%; padding: 14px; font-weight: 600; font-size: 1rem; border-radius: var(--radius-sm); cursor: pointer; transition: transform var(--transition-fast); background: var(--gradient-primary); color: white;">
+              Calculate Estimate
+            </button>
+          </form>
+        </div>
+
+        <div class="calc-results" id="calc-results-card" style="padding: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; background: var(--gray-50); text-align: center;">
+          <div class="results-placeholder" id="results-placeholder">
+            <i class="fas fa-receipt" style="font-size: 3rem; color: var(--gray-400); margin-bottom: 15px;"></i>
+            <p style="color: var(--gray-600); font-size: 0.95rem;">Enter details and click calculate to view your estimation.</p>
+          </div>
+          <div class="results-display" id="results-display" style="display: none; width: 100%;">
+            <h4 style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--gray-800); margin-bottom: 10px;">Estimated Price Range</h4>
+            <div class="price-range-display" style="margin: 15px 0 20px; font-family: var(--font-heading); font-weight: 800; font-size: 2.2rem; color: var(--blue-900); display: flex; align-items: center; justify-content: center; gap: 10px;">
+              <span class="price-min" id="res-price-min">₹0</span>
+              <span class="price-separator" style="color: var(--gray-400); font-weight: 300;">-</span>
+              <span class="price-max" id="res-price-max">₹0</span>
+            </div>
+            <div class="results-badges" style="display: flex; gap: 10px; justify-content: center; margin-bottom: 20px;">
+              <span class="badge" style="background: var(--blue-100); color: var(--blue-800); padding: 6px 12px; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 600;"><i class="fas fa-circle-check" style="margin-right: 4px;"></i> Free Installation</span>
+              <span class="badge" style="background: var(--blue-100); color: var(--blue-800); padding: 6px 12px; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 600;"><i class="fas fa-circle-check" style="margin-right: 4px;"></i> Free Inspection</span>
+            </div>
+            <p class="results-note" style="font-size: 0.8rem; color: var(--gray-500); line-height: 1.5; margin-bottom: 25px;">Note: Final pricing depends on accurate measurements and specific options chosen during site inspection.</p>
+            <div class="results-cta">
+              <a href="" class="btn btn-whatsapp" id="btn-calc-whatsapp" target="_blank" rel="noopener" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px; font-weight: 600; border-radius: var(--radius-sm); background: var(--gradient-whatsapp); color: white;">
+                <i class="fab fa-whatsapp"></i> Book Site Inspection
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -798,7 +934,7 @@
             <h3>Balcony Invisible Grills</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/invisible-grill.png" alt="Balcony Invisible Grills Bangalore" loading="lazy" width="300" height="200" style="object-fit: cover;">
+            <img src="images/invisible-grill.webp" alt="Balcony Invisible Grills Bangalore" loading="lazy" width="300" height="200" style="object-fit: cover;">
           </div>
           <div class="service-card-body">
             <p>Secure your balcony with premium stainless steel invisible grills. 100% rustproof, ultra-strong safety setup without compromising your outdoor landscape views.</p>
@@ -821,7 +957,7 @@
             <h3>Window Invisible Grills</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/windowgrill.jpeg" alt="Window Invisible Grills Bangalore" loading="lazy" width="300" height="200" style="object-fit: cover;">
+            <img src="images/windowgrill.webp" alt="Window Invisible Grills Bangalore" loading="lazy" width="300" height="200" style="object-fit: cover;">
           </div>
           <div class="service-card-body">
             <p>A modern, elegant alternative to bulky iron window grills. Perfect for safety in apartments and villas, ensuring emergency exit capability.</p>
@@ -844,7 +980,7 @@
             <h3>Staircase Invisible Grills</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/staircasegrill.webp" alt="Staircase Invisible Grills Bangalore" loading="lazy" width="300" height="200" style="object-fit: cover;" onerror="this.onerror=null; this.src='images/staircasegrill.jpeg';">
+            <img src="images/staircasegrill.webp" alt="Staircase Invisible Grills Bangalore" loading="lazy" width="300" height="200" style="object-fit: cover;" onerror="this.onerror=null; this.src='images/staircasegrill.webp';">
           </div>
           <div class="service-card-body">
             <p>Prevent accidents and falls around staircases and high open handrail voids. Customized layout blending with home aesthetics.</p>
@@ -867,7 +1003,7 @@
             <h3>Custom Invisible Grills</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/in1.jpeg" alt="Custom Invisible Grills Bangalore" loading="lazy" width="300" height="200" style="object-fit: cover;" onerror="this.onerror=null; this.src='images/invisible-grill.png';">
+            <img src="images/in1.webp" alt="Custom Invisible Grills Bangalore" loading="lazy" width="300" height="200" style="object-fit: cover;" onerror="this.onerror=null; this.src='images/invisible-grill.webp';">
           </div>
           <div class="service-card-body">
             <p>Tailor-made wire spacing (2 to 4 inches) and frame designs. Perfect for special partition spaces, gardens, and custom toddler/pet proofing.</p>
@@ -890,7 +1026,7 @@
             <h3>Cloth Hangers</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/clothhanger.jpg" alt="Ceiling Cloth Hangers Bangalore" loading="lazy" width="300" height="200" style="object-fit: cover;">
+            <img src="images/clothhanger.webp" alt="Ceiling Cloth Hangers Bangalore" loading="lazy" width="300" height="200" style="object-fit: cover;">
           </div>
           <div class="service-card-body">
             <p>Maximize your balcony space with ceiling-mounted pulley clothes drying hangers. Heavy-duty, space-saving, and easy-to-operate drying systems.</p>
@@ -926,7 +1062,7 @@
           </div>
         </div>
         <div class="gallery-item reveal">
-          <img src="images/net.jpeg" alt="Balcony safety net installation" loading="lazy" width="600" height="450" decoding="async" style="object-fit: cover;">
+          <img src="images/net.webp" alt="Balcony safety net installation" loading="lazy" width="600" height="450" decoding="async" style="object-fit: cover;">
           <div class="gallery-overlay">
             <h4>Balcony Safety Net</h4>
           </div>
@@ -944,13 +1080,13 @@
           </div>
         </div>
         <div class="gallery-item reveal">
-          <img src="images/bird.jpg" alt="Bird protection net" loading="lazy" width="600" height="450" decoding="async" style="object-fit: cover;">
+          <img src="images/bird.webp" alt="Bird protection net" loading="lazy" width="600" height="450" decoding="async" style="object-fit: cover;">
           <div class="gallery-overlay">
             <h4>Bird Protection Net</h4>
           </div>
         </div>
         <div class="gallery-item reveal">
-          <img src="images/cricket.jpeg" alt="Cricket practice net" loading="lazy" width="600" height="450" decoding="async" style="object-fit: cover;">
+          <img src="images/cricket.webp" alt="Cricket practice net" loading="lazy" width="600" height="450" decoding="async" style="object-fit: cover;">
           <div class="gallery-overlay">
             <h4>Cricket Practice Net</h4>
           </div>
@@ -1318,7 +1454,7 @@
           </div>
           <div class="footer-contact-item">
             <i class="fas fa-envelope"></i>
-            <a href="mailto:info@swathisafetynets.com">info@swathisafetynets.com</a>
+            <a href="mailto:info.swathisafetynets@gmail.com">info.swathisafetynets@gmail.com</a>
           </div>
           <div class="footer-contact-item">
             <i class="fas fa-map-marker-alt"></i>
@@ -1368,9 +1504,16 @@
         </div>
       </div>
 
-      <!-- Google Map -->
-      <div class="footer-map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248849.84916296526!2d77.49085452927828!3d12.954517009498942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Swathi Safety Nets Bangalore Location" aria-label="Google Map showing Bangalore location"></iframe>
+      <!-- Google Map (Lazy Loaded) -->
+      <div class="footer-map" id="map-container" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248849.84916296526!2d77.49085452927828!3d12.954517009498942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin">
+        <div class="map-placeholder" id="map-placeholder">
+          <div class="map-placeholder-content">
+            <i class="fas fa-map-location-dot"></i>
+            <h3>Interactive Google Map</h3>
+            <p>Click here or scroll down to load our service coverage map of Bangalore</p>
+            <button class="btn btn-primary btn-sm">Load Map</button>
+          </div>
+        </div>
       </div>
 
       <div class="footer-bottom">

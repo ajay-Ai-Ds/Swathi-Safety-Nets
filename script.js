@@ -84,51 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==================== HERO IMAGE CARD SLIDER ====================
-  const imageSlides = document.querySelectorAll('.hero-image-slide');
-  const sliderDots = document.querySelectorAll('.slider-dot');
-  const sliderProgressBar = document.getElementById('slider-progress');
-  let slideIndex = 0;
-  const slideDuration = 4000;
-  let slideTimer;
-  let progressStart;
-
-  function goToSlide(index) {
-    imageSlides.forEach(s => s.classList.remove('active'));
-    sliderDots.forEach(d => d.classList.remove('active'));
-    slideIndex = index;
-    imageSlides[slideIndex].classList.add('active');
-    sliderDots[slideIndex].classList.add('active');
-    startProgress();
-  }
-
-  function nextSlide() {
-    goToSlide((slideIndex + 1) % imageSlides.length);
-  }
-
-  function startProgress() {
-    if (sliderProgressBar) {
-      sliderProgressBar.style.transition = 'none';
-      sliderProgressBar.style.width = '0%';
-      // Force reflow
-      sliderProgressBar.offsetWidth;
-      sliderProgressBar.style.transition = `width ${slideDuration}ms linear`;
-      sliderProgressBar.style.width = '100%';
-    }
-    clearTimeout(slideTimer);
-    slideTimer = setTimeout(nextSlide, slideDuration);
-  }
-
-  // Dot click
-  sliderDots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      goToSlide(parseInt(dot.dataset.slide));
-    });
-  });
-
-  // Start slider
-  if (imageSlides.length > 1) {
-    startProgress();
-  }
+  // (Removed since hero-image-slide elements do not exist in HTML. The site uses .carousel-slide instead)
 
   // ==================== SMOOTH SCROLLING ====================
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -493,6 +449,156 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setServiceSlide(0, false);
     startServiceAutoplay();
+  }
+
+  // ==================== PRICE CALCULATOR LOGIC ====================
+  const calcService = document.getElementById('calc-service');
+  const dimInputsBlock = document.getElementById('dim-inputs-block');
+  const rodsInputBlock = document.getElementById('rods-input-block');
+  const btnCalculate = document.getElementById('btn-calculate');
+  const resultsPlaceholder = document.getElementById('results-placeholder');
+  const resultsDisplay = document.getElementById('results-display');
+  const resPriceMin = document.getElementById('res-price-min');
+  const resPriceMax = document.getElementById('res-price-max');
+  const btnCalcWhatsapp = document.getElementById('btn-calc-whatsapp');
+
+  if (calcService) {
+    // Show/hide inputs based on service selection
+    calcService.addEventListener('change', () => {
+      if (calcService.value === 'cloth-hanger') {
+        dimInputsBlock.style.display = 'none';
+        rodsInputBlock.style.display = 'block';
+        // Remove required attribute from width/height
+        document.getElementById('calc-width').removeAttribute('required');
+        document.getElementById('calc-height').removeAttribute('required');
+      } else {
+        dimInputsBlock.style.display = 'grid';
+        rodsInputBlock.style.display = 'none';
+        // Restore required attribute
+        document.getElementById('calc-width').setAttribute('required', 'true');
+        document.getElementById('calc-height').setAttribute('required', 'true');
+      }
+    });
+
+    btnCalculate.addEventListener('click', () => {
+      const service = calcService.value;
+      if (!service) {
+        alert('Please select a service first.');
+        return;
+      }
+
+      let minPrice = 0;
+      let maxPrice = 0;
+      let calcDetailsText = '';
+
+      if (service === 'cloth-hanger') {
+        const rodsOption = document.getElementById('calc-rods');
+        const selectedOption = rodsOption.options[rodsOption.selectedIndex];
+        const basePrice = parseInt(selectedOption.dataset.price);
+        minPrice = basePrice;
+        maxPrice = basePrice + 400; // variance for ceiling attachments
+        calcDetailsText = `Service: Ceiling Cloth Hangers (${rodsOption.value} Rods)`;
+      } else {
+        const widthVal = parseInt(document.getElementById('calc-width').value);
+        const heightVal = parseInt(document.getElementById('calc-height').value);
+
+        if (!widthVal || widthVal <= 0 || !heightVal || heightVal <= 0) {
+          alert('Please enter valid positive dimensions for width and height.');
+          return;
+        }
+
+        const area = widthVal * heightVal;
+        const selectedOption = calcService.options[calcService.selectedIndex];
+        const minRate = parseInt(selectedOption.dataset.min);
+        const maxRate = parseInt(selectedOption.dataset.max);
+
+        minPrice = area * minRate;
+        maxPrice = area * maxRate;
+        calcDetailsText = `Service: ${selectedOption.text.split('(')[0].trim()} (${widthVal} ft x ${heightVal} ft = ${area} sq ft)`;
+      }
+
+      // Display results
+      resPriceMin.textContent = '₹' + minPrice.toLocaleString('en-IN');
+      resPriceMax.textContent = '₹' + maxPrice.toLocaleString('en-IN');
+
+      resultsPlaceholder.style.display = 'none';
+      resultsDisplay.style.display = 'block';
+
+      // Setup WhatsApp link
+      const whatsappText = encodeURIComponent(
+        `Hi Swathi Safety Nets! I generated a cost estimate on your website calculator.\n\n` +
+        `• ${calcDetailsText}\n` +
+        `• Estimated Range: ₹${minPrice.toLocaleString('en-IN')} - ₹${maxPrice.toLocaleString('en-IN')}\n\n` +
+        `I would like to book a free site inspection at my location. Please call me back.`
+      );
+      btnCalcWhatsapp.href = `https://wa.me/919000182240?text=${whatsappText}`;
+    });
+  }
+
+  // ==================== GOOGLE MAPS LAZY LOAD ====================
+  const mapContainer = document.getElementById('map-container');
+  const mapPlaceholder = document.getElementById('map-placeholder');
+
+  if (mapContainer && mapPlaceholder) {
+    let mapLoaded = false;
+
+    const loadMap = () => {
+      if (mapLoaded) return;
+      mapLoaded = true;
+
+      // Add loading spinner
+      mapPlaceholder.innerHTML = '<div class="map-placeholder-content"><div class="map-loading-spinner"></div><p style="color: var(--white);">Loading interactive Google Map...</p></div>';
+
+      const iframe = document.createElement('iframe');
+      iframe.src = mapContainer.dataset.src;
+      iframe.style.width = '100%';
+      iframe.style.height = '450px';
+      iframe.style.border = '0';
+      iframe.style.display = 'none';
+      iframe.allowFullscreen = true;
+      iframe.loading = 'lazy';
+      iframe.referrerPolicy = 'no-referrer-when-downgrade';
+      iframe.title = 'Swathi Safety Nets Bangalore Location';
+      iframe.ariaLabel = 'Google Map showing Bangalore location';
+
+      iframe.onload = () => {
+        // Fade in iframe and remove placeholder
+        mapPlaceholder.style.opacity = '0';
+        setTimeout(() => {
+          mapContainer.innerHTML = '';
+          mapContainer.appendChild(iframe);
+          iframe.style.display = 'block';
+        }, 300);
+      };
+
+      mapContainer.appendChild(iframe);
+    };
+
+    // Load map on placeholder click
+    mapPlaceholder.addEventListener('click', loadMap);
+
+    // Auto-load map when footer scrolls into view
+    if ('IntersectionObserver' in window) {
+      const mapObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            loadMap();
+            mapObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        rootMargin: '200px 0px' // Load when map is within 200px of viewport
+      });
+      mapObserver.observe(mapContainer);
+    } else {
+      // Fallback for older browsers
+      window.addEventListener('scroll', () => {
+        const rect = mapContainer.getBoundingClientRect();
+        if (rect.top < window.innerHeight + 200) {
+          loadMap();
+        }
+      }, { passive: true });
+    }
   }
 
   // ==================== CONSOLE ====================

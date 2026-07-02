@@ -37,7 +37,15 @@
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://www.google-analytics.com">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'">
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="index.css">
@@ -61,6 +69,56 @@
         }
       });
     });
+  </script>
+
+  <!-- FAQ Schema (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Are invisible grills strong enough to prevent falls?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, our invisible grills are built using high-tensile SS 316 stainless steel wires. Each individual wire has a tensile strength capable of holding up to 400kg+ of impact force. They are secured tightly into structural aluminum tracks at the top and bottom, making them extremely safe for children, pets, and adults."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will these invisible grills rust over time?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. We use SS 316 marine-grade stainless steel which is highly resistant to atmospheric corrosion and rust. Additionally, our wires are coated with a thick protective layer of nylon or Teflon, which prevents atmospheric exposure and makes them scratch-free. We offer a rust-proof warranty on all installations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can invisible grills be cut in case of a fire emergency?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. This is one of the primary safety advantages of invisible grills over traditional iron grills. In case of fire or evacuation emergencies, the wires can be cut using a standard heavy-duty wire cutter in seconds, allowing for quick escape. Traditional metal grills require specialized welding equipment or saws to bypass."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What spacing options are available for invisible grills?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We offer customizable spacing based on your requirements. Standard spacing is 3 to 4 inches, which is perfect for general safety and keeping balconies open. If you have toddlers, infants, or small pets (like cats), we highly recommend our 2-inch spacing configuration for absolute safety."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you clean and maintain invisible grills?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "They require virtually zero maintenance. Since the wires are nylon-coated, dust does not settle easily. You can clean them by simply wiping down with a damp cloth or spraying water. Unlike iron grills, they do not require periodic painting or rust-removal treatments."
+        }
+      }
+    ]
+  }
   </script>
 </head>
 <body>
@@ -105,7 +163,7 @@
     <div class="container">
       <!-- Logo -->
       <a href="index.html#home" class="logo-group" aria-label="Swathi Safety Nets Home">
-        <img src="images/swathilogo1.jpg" alt="Swathi Safety Nets Logo" class="logo-img" width="50" height="50" loading="eager">
+        <img src="images/swathilogo1.webp" alt="Swathi Safety Nets Logo" class="logo-img" width="50" height="50" loading="eager">
         <div class="logo-text">
           <h1>Swathi Safety Nets</h1>
           <span>Bangalore's Trusted Safety Experts</span>
@@ -150,7 +208,7 @@
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile Navigation">
     <div class="mobile-nav-header">
       <div class="mobile-nav-logo">
-        <img src="images/swathilogo1.jpg" alt="Logo" width="40" height="40" loading="lazy">
+        <img src="images/swathilogo1.webp" alt="Logo" width="40" height="40" loading="lazy">
         <div class="mobile-nav-logo-text">
           <h3>Swathi Safety Nets</h3>
           <span>Safety Experts</span>
@@ -226,7 +284,7 @@
         <div class="services-carousel-shell">
           <div class="services-carousel-track">
             <article class="services-slide active" aria-label="Invisible Grills">
-              <img src="images/invisible-grill.png" alt="Invisible Grills" width="900" height="600" loading="lazy">
+              <img src="images/invisible-grill.webp" alt="Invisible Grills" width="900" height="600" loading="lazy">
               <div class="services-slide-overlay">
                 <div class="services-slide-content">
                   <h3>Invisible Grills</h3>
@@ -265,7 +323,7 @@
             </article>
 
             <article class="services-slide" aria-label="Bird Protection Nets">
-              <img src="images/bird.jpg" alt="Bird Protection Nets" width="900" height="600" loading="lazy">
+              <img src="images/bird.webp" alt="Bird Protection Nets" width="900" height="600" loading="lazy">
               <div class="services-slide-overlay">
                 <div class="services-slide-content">
                   <h3>Bird Protection Nets</h3>
@@ -291,7 +349,7 @@
             </article>
 
             <article class="services-slide" aria-label="Monkey Safety Nets">
-              <img src="images/monkey.jpeg" alt="Monkey Safety Nets" width="900" height="600" loading="lazy">
+              <img src="images/monkey.webp" alt="Monkey Safety Nets" width="900" height="600" loading="lazy">
               <div class="services-slide-overlay">
                 <div class="services-slide-content">
                   <h3>Monkey Safety Nets</h3>
@@ -399,7 +457,7 @@
             <h3>Balcony Invisible Grills</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/invisible-grill.png" alt="Balcony Invisible Grill Installation" loading="lazy" width="300" height="200" style="object-fit: cover;">
+            <img src="images/invisible-grill.webp" alt="Balcony Invisible Grill Installation" loading="lazy" width="300" height="200" style="object-fit: cover;">
           </div>
           <div class="service-card-body">
             <p>Secure high-rise apartment balconies cleanly. These grills provide absolute safety for your family while keeping the outdoor scenery, air, and natural light completely unobstructed.</p>
@@ -422,7 +480,7 @@
             <h3>Window Invisible Grills</h3>
           </div>
           <div class="service-card-image">
-            <img src="images/windowgrill.jpeg" alt="Window Invisible Grill Installation" loading="lazy" width="300" height="200" style="object-fit: cover;">
+            <img src="images/windowgrill.webp" alt="Window Invisible Grill Installation" loading="lazy" width="300" height="200" style="object-fit: cover;">
           </div>
           <div class="service-card-body">
             <p>An elegant replacement for traditional, heavy iron window grills. Perfect for modern villas and apartments. Maintenance-free, rust-proof, and fire-escape friendly.</p>
@@ -522,13 +580,13 @@
 
       <div class="gallery-grid stagger-children" style="margin-top: 30px;">
         <div class="gallery-item reveal">
-          <img src="images/invisible-grill.png" alt="Balcony Invisible Grill Installation" loading="lazy" width="600" height="450" style="object-fit: cover;">
+          <img src="images/invisible-grill.webp" alt="Balcony Invisible Grill Installation" loading="lazy" width="600" height="450" style="object-fit: cover;">
           <div class="gallery-overlay">
             <h4>Balcony Invisible Grill</h4>
           </div>
         </div>
         <div class="gallery-item reveal">
-          <img src="images/windowgrill.jpeg" alt="Window Invisible Grill Installation" loading="lazy" width="600" height="450" style="object-fit: cover;">
+          <img src="images/windowgrill.webp" alt="Window Invisible Grill Installation" loading="lazy" width="600" height="450" style="object-fit: cover;">
           <div class="gallery-overlay">
             <h4>Window Invisible Grill</h4>
           </div>
@@ -552,19 +610,19 @@
           </div>
         </div>
         <div class="gallery-item reveal">
-          <img src="images/in1.jpeg" alt="Modern Balcony Invisible Grill" loading="lazy" width="600" height="450" style="object-fit: cover;">
+          <img src="images/in1.webp" alt="Modern Balcony Invisible Grill" loading="lazy" width="600" height="450" style="object-fit: cover;">
           <div class="gallery-overlay">
             <h4>Modern Balcony Grill</h4>
           </div>
         </div>
         <div class="gallery-item reveal">
-          <img src="images/balconnybharathi.jpeg" alt="Residential Balcony Invisible Grill" loading="lazy" width="600" height="450" style="object-fit: cover;">
+          <img src="images/balconnybharathi.webp" alt="Residential Balcony Invisible Grill" loading="lazy" width="600" height="450" style="object-fit: cover;">
           <div class="gallery-overlay">
             <h4>Residential Balcony Grill</h4>
           </div>
         </div>
         <div class="gallery-item reveal">
-          <img src="images/4.jpeg" alt="Premium Stainless Steel Invisible Grill" loading="lazy" width="600" height="450" style="object-fit: cover;">
+          <img src="images/4.webp" alt="Premium Stainless Steel Invisible Grill" loading="lazy" width="600" height="450" style="object-fit: cover;">
           <div class="gallery-overlay">
             <h4>Premium SS 316 Grill</h4>
           </div>

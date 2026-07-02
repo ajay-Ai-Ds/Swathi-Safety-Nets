@@ -1,28 +1,27 @@
-/* ===== GOOGLE FONTS ===== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+/* ===== GOOGLE FONTS (Loaded via HTML link for performance) ===== */
 
 /* ===== CSS CUSTOM PROPERTIES ===== */
 :root {
-  /* Primary Blues */
-  --blue-50: #eff6ff;
-  --blue-100: #dbeafe;
+  /* Primary Trust Navy & Royal Blues */
+  --blue-50: #f2f7fe;
+  --blue-100: #e2ecfc;
   --blue-200: #bfdbfe;
   --blue-300: #93c5fd;
   --blue-400: #60a5fa;
   --blue-500: #3b82f6;
   --blue-600: #2563eb;
   --blue-700: #1d4ed8;
-  --blue-800: #1e40af;
-  --blue-900: #1e3a8a;
+  --blue-800: #1c2541; /* Deep Trust Navy */
+  --blue-900: #0b132b; /* Deep Space Navy */
 
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
-  --gradient-hero: linear-gradient(135deg, #0f172a 0%, #1e3a8a 40%, #1d4ed8 100%);
-  --gradient-glow: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
+  --gradient-primary: linear-gradient(135deg, #1c2541 0%, #2563eb 60%, #3b82f6 100%);
+  --gradient-hero: linear-gradient(135deg, #0b132b 0%, #1c2541 50%, #2563eb 100%);
+  --gradient-glow: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #d97706 100%);
   --gradient-card: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-  --gradient-button: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  --gradient-button: linear-gradient(135deg, #1c2541 0%, #2563eb 100%);
   --gradient-whatsapp: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-  --gradient-call: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+  --gradient-call: linear-gradient(135deg, #d97706 0%, #f59e0b 100%); /* Gold/Amber CTA Gradient */
 
   /* Neutrals */
   --white: #ffffff;
@@ -1886,9 +1885,10 @@ button {
 
 .service-card-image {
   width: 100%;
-  height: 180px;
+  height: 220px; /* Increased from 180px to make installation details more visible */
   overflow: hidden;
   background: var(--gray-100);
+  border-bottom: 1px solid var(--gray-100);
 }
 
 .service-card-image img {
@@ -3264,5 +3264,100 @@ button {
   
   .carousel-btn-right {
     right: 10px;
+  }
+}
+
+/* ===== EXTENSION STYLES: PRICE CALCULATOR & MAP LAZY LOAD ===== */
+.calculator-wrapper select:focus, 
+.calculator-wrapper input:focus {
+  border-color: var(--blue-600) !important;
+  background-color: var(--white) !important;
+}
+
+/* Map lazy loading placeholder styling */
+.map-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 450px;
+  background: linear-gradient(135deg, var(--gray-800) 0%, var(--blue-900) 100%);
+  color: var(--white);
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  padding: 30px;
+  transition: opacity var(--transition-base);
+}
+
+.map-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath fill-rule='evenodd' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7z'/%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.8;
+}
+
+.map-placeholder-content {
+  position: relative;
+  z-index: 2;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.map-placeholder-content i {
+  font-size: 3.5rem;
+  color: var(--blue-400);
+  margin-bottom: 20px;
+  animation: float 4s ease-in-out infinite;
+}
+
+.map-placeholder-content h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.map-placeholder-content p {
+  font-size: 0.95rem;
+  color: var(--gray-300);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* Spinner for loading state */
+.map-loading-spinner {
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-left-color: var(--blue-500);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Calculator Responsive tweaks */
+@media (max-width: 768px) {
+  .calculator-wrapper {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .calc-card {
+    border-right: none !important;
+    border-bottom: 1px solid var(--gray-200) !important;
+    padding: 30px 20px !important;
+  }
+  
+  .calc-results {
+    padding: 30px 20px !important;
   }
 }

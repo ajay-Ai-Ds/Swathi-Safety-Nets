@@ -2408,7 +2408,8 @@ button {
   .floating-buttons {
     bottom: 16px;
     right: 16px;
-    gap: 15px;
+    gap: 12px;
+    z-index: 10000;
   }
 
   .float-btn {
@@ -2656,16 +2657,26 @@ button {
     font-size: 1.3rem;
   }
 
+  .carousel-slide .carousel-float-call,
+  .carousel-float-call {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: auto;
+    bottom: auto;
+    min-width: 132px;
+    height: 44px;
+    padding: 0 12px;
+    font-size: 13px;
+    max-width: calc(100% - 24px);
+    z-index: 18;
+  }
+
   .scroll-top {
     bottom: 20px;
     right: 20px;
     width: 40px;
     height: 40px;
-  }
-
-  #float-call {
-    bottom: 80px;
-    right: 20px;
   }
 }
 

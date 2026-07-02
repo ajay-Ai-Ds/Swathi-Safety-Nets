@@ -309,6 +309,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const offset = -carouselIndex * 100;
     carouselTrack.style.transform = `translateX(${offset}%)`;
 
+    // Lazy load current active slide and pre-fetch the next slide
+    const loadSlideImage = (slide) => {
+      if (!slide) return;
+      const img = slide.querySelector('img[data-src]');
+      if (img) {
+        img.src = img.dataset.src;
+        img.removeAttribute('data-src');
+      }
+    };
+
+    loadSlideImage(carouselSlides[carouselIndex]);
+    loadSlideImage(carouselSlides[(carouselIndex + 1) % carouselSlides.length]);
+
     // Update dots
     carouselSlides.forEach((slide, index) => {
       slide.classList.toggle('current-slide', index === carouselIndex);

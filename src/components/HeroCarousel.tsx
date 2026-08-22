@@ -9,14 +9,16 @@ interface Slide {
 }
 
 const slides: Slide[] = [
-  { image: "/images/pigeon.webp", alt: "Pigeon Safety Nets Bangalore", caption: "Pigeon Safety Nets" },
-  { image: "/images/net.webp", alt: "Balcony Safety Nets Bangalore", caption: "Balcony Safety Nets" },
-  { image: "/images/child.webp", alt: "Children Safety Nets Bangalore", caption: "Children Safety Nets" },
-  { image: "/images/pets.webp", alt: "Pet Safety Nets Bangalore", caption: "Pet Safety Nets" },
-  { image: "/images/ductareanets.webp", alt: "Duct Area Safety Nets Bangalore", caption: "Duct Area Safety Nets" },
-  { image: "/images/coconut.webp", alt: "Coconut Tree Safety Nets Bangalore", caption: "Coconut Tree Safety Nets" },
-  { image: "/images/industrial.webp", alt: "Industrial Safety Nets Bangalore", caption: "Industrial Safety Nets" },
-  { image: "/images/cricket.webp", alt: "Cricket Practice Nets Bangalore", caption: "Cricket Practice Nets" },
+  { image: "/images/balcony.webp", alt: "Balcony Safety Nets Bangalore - Swathi Safety Nets", caption: "Balcony Safety Nets" },
+  { image: "/images/invisiblegrill.webp", alt: "Invisible Grills Bangalore - Swathi Safety Nets", caption: "Invisible Grills Installation" },
+  { image: "/images/pigeon-safety-nets.webp", alt: "Pigeon Safety Nets Bangalore - Swathi Safety Nets", caption: "Pigeon & Bird Safety Nets" },
+  { image: "/images/childrensafetynet.webp", alt: "Children Safety Nets Bangalore - Swathi Safety Nets", caption: "Children Safety Nets" },
+  { image: "/images/petsafetynet.webp", alt: "Pet Safety Nets Bangalore - Swathi Safety Nets", caption: "Pet Safety Nets" },
+  { image: "/images/ductareanets.webp", alt: "Duct Area Safety Nets Bangalore - Swathi Safety Nets", caption: "Duct Area Safety Nets" },
+  { image: "/images/monkey.webp", alt: "Monkey Safety Nets Bangalore - Swathi Safety Nets", caption: "Monkey Safety Nets" },
+  { image: "/images/sports.jpg", alt: "Cricket & Sports Practice Nets Bangalore - Swathi Safety Nets", caption: "Cricket & Sports Nets" },
+  { image: "/images/clothhanger.jpg", alt: "Ceiling Cloth Drying Hangers Bangalore - Swathi Safety Nets", caption: "Ceiling Cloth Hangers" },
+  { image: "/images/team.webp", alt: "Swathi Safety Nets Professional Installation Team", caption: "Our Expert Installation Team" },
 ];
 
 export default function HeroCarousel() {

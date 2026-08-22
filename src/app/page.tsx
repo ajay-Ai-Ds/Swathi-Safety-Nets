@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import HeroCarousel from "@/components/HeroCarousel";
+import HeroSlider from "@/components/HeroSlider";
 import PriceEstimator from "@/components/PriceEstimator";
 import GallerySection from "@/components/GallerySection";
 import FAQSection from "@/components/FAQSection";
@@ -184,132 +184,23 @@ export default function HomePage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="hero" id="home">
-        <div className="hero-overlay"></div>
-        <div className="hero-grid"></div>
-        <div className="hero-particles">
-          <div className="particle"></div>
-          <div className="particle"></div>
-          <div className="particle"></div>
-          <div className="particle"></div>
-          <div className="particle"></div>
-          <div className="particle"></div>
-        </div>
-        <div className="hero-orb hero-orb-1"></div>
-        <div className="hero-orb hero-orb-2"></div>
-        <div className="hero-orb hero-orb-3"></div>
+      {/* Hero Section (Matching Nagamani Style) */}
+      <HeroSlider />
 
-        <div className="hero-content w-full">
-          <div className="container">
-            <div className="hero-left">
-              <div className="hero-badge">
-                <div className="hero-badge-dot"></div>
-                <i className="fas fa-star"></i>
-                Rated 4.9/5 by 1250+ Customers
-              </div>
-
-              {/* Polished Auto-rotating Carousel component */}
-              <HeroCarousel />
-
-              <h2 className="hero-title mt-6">
-                Protect Your Family With Bangalore's <span className="highlight">Trusted Safety Net Experts</span>
-              </h2>
-
-              <p className="hero-subtitle">
-                Professional pigeon safety nets, balcony safety nets, children safety nets, and industrial safety net
-                installations with same-day service across Bangalore.
-              </p>
-
-              <div className="hero-buttons">
-                <a href="tel:+919000182240" className="btn btn-call" id="hero-call-btn">
-                  <i className="fas fa-phone-alt"></i> Call Now
-                </a>
-                <a
-                  href="https://wa.me/919000182240?text=Hi%20Swathi%20Safety%20Nets%2C%20I%20need%20safety%20net%20installation."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-whatsapp"
-                  id="hero-whatsapp-btn"
-                >
-                  <i className="fab fa-whatsapp"></i> WhatsApp Now
-                </a>
-                <a
-                  href="https://wa.me/919000182240?text=Hi%2C%20I%20would%20like%20a%20free%20site%20inspection%20for%20safety%20net%20installation."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-inspection"
-                  id="hero-inspection-btn"
-                >
-                  <i className="fas fa-clipboard-check"></i> Free Site Inspection
-                </a>
-              </div>
-
-              <div className="hero-trust">
-                <div className="trust-item">
-                  <div className="trust-icon">
-                    <i className="fas fa-shield-halved"></i>
-                  </div>
-                  <div className="trust-text">
-                    <strong>Verified</strong>
-                    Trusted Company
-                  </div>
-                </div>
-                <div className="trust-item">
-                  <div className="trust-icon">
-                    <i className="fas fa-bolt"></i>
-                  </div>
-                  <div className="trust-text">
-                    <strong>Same Day</strong>
-                    Installation
-                  </div>
-                </div>
-                <div className="trust-item">
-                  <div className="trust-icon">
-                    <i className="fas fa-hand-holding-heart"></i>
-                  </div>
-                  <div className="trust-text">
-                    <strong>Free</strong>
-                    Site Inspection
-                  </div>
-                </div>
-              </div>
+      {/* Stats bar (Matching Nagamani Style) */}
+      <div className="bg-green-700 text-white shadow-md">
+        <div className="max-w-7xl mx-auto px-4 py-5 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+          {[
+            { val: "15+", label: "Years Experience" },
+            { val: "5000+", label: "Installations Done" },
+            { val: "4.9★", label: "Google Rating" },
+            { val: "24/7", label: "Customer Support" },
+          ].map((s) => (
+            <div key={s.label}>
+              <p className="text-2xl md:text-3xl font-extrabold">{s.val}</p>
+              <p className="text-green-100 text-xs md:text-sm mt-0.5 font-medium">{s.label}</p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Bar (Polished Counters) */}
-      <div className="stats-bar">
-        <div className="container reveal revealed">
-          <div className="stat-box">
-            <div className="stat-icon">
-              <i className="fas fa-calendar-check"></i>
-            </div>
-            <h3>15+</h3>
-            <p>Years Experience</p>
-          </div>
-          <div className="stat-box">
-            <div className="stat-icon">
-              <i className="fas fa-project-diagram"></i>
-            </div>
-            <h3>15,000+</h3>
-            <p>Projects Completed</p>
-          </div>
-          <div className="stat-box">
-            <div className="stat-icon">
-              <i className="fas fa-smile-beam"></i>
-            </div>
-            <h3>15,000+</h3>
-            <p>Happy Customers</p>
-          </div>
-          <div className="stat-box">
-            <div className="stat-icon">
-              <i className="fas fa-map-marked-alt"></i>
-            </div>
-            <h3>50+</h3>
-            <p>Areas Covered</p>
-          </div>
+          ))}
         </div>
       </div>
 

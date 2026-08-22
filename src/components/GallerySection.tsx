@@ -9,12 +9,15 @@ interface GalleryItem {
 }
 
 const galleryItems: GalleryItem[] = [
-  { src: "/images/pigeon.webp", alt: "Pigeon safety net installation", title: "Pigeon Safety Net" },
-  { src: "/images/net.webp", alt: "Balcony safety net installation", title: "Balcony Safety Net" },
-  { src: "/images/child.webp", alt: "Children safety net", title: "Children Safety Net" },
-  { src: "/images/constructionnets.webp", alt: "Construction safety net", title: "Construction Safety Net" },
-  { src: "/images/bird.webp", alt: "Bird protection net", title: "Bird Protection Net" },
-  { src: "/images/cricket.webp", alt: "Cricket practice net", title: "Cricket Practice Net" },
+  { src: "/images/balcony.webp", alt: "Balcony safety net installation Bangalore - Swathi Safety Nets", title: "Balcony Safety Net" },
+  { src: "/images/invisiblegrill.webp", alt: "Invisible grill installation Bangalore - Swathi Safety Nets", title: "Invisible Grill Installation" },
+  { src: "/images/pigeon-safety-nets.webp", alt: "Pigeon safety net installation Bangalore - Swathi Safety Nets", title: "Pigeon Safety Net" },
+  { src: "/images/childrensafetynet.webp", alt: "Children safety net installation Bangalore - Swathi Safety Nets", title: "Children Safety Net" },
+  { src: "/images/petsafetynet.webp", alt: "Pet safety net installation Bangalore - Swathi Safety Nets", title: "Pet Safety Net" },
+  { src: "/images/ductarea1.webp", alt: "Duct area safety net Bangalore - Swathi Safety Nets", title: "Duct Area Safety Net" },
+  { src: "/images/monkey.webp", alt: "Monkey safety net Bangalore - Swathi Safety Nets", title: "Monkey Safety Net" },
+  { src: "/images/sports.jpg", alt: "Cricket practice sports net Bangalore - Swathi Safety Nets", title: "Cricket & Sports Net" },
+  { src: "/images/clothhanger.jpg", alt: "Ceiling cloth drying hanger Bangalore - Swathi Safety Nets", title: "Ceiling Cloth Hanger" },
 ];
 
 export default function GallerySection() {

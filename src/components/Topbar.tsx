@@ -9,7 +9,7 @@ export default function Topbar() {
         <div className="topbar-left">
           <a href="tel:+919000182240" className="topbar-item" id="topbar-phone">
             <i className="fas fa-phone-alt"></i>
-            <span>+91 9000182240</span>
+            <span>Primary: +91 9000182240</span>
           </a>
           <div className="topbar-divider"></div>
           <a
@@ -23,17 +23,16 @@ export default function Topbar() {
             <span>WhatsApp</span>
           </a>
           <div className="topbar-divider"></div>
-          <a href="mailto:info.swathisafetynets@gmail.com" className="topbar-item" id="topbar-email">
-            <i className="fas fa-envelope"></i>
-            <span>info.swathisafetynets@gmail.com</span>
-          </a>
-          <div className="topbar-divider"></div>
           <div className="topbar-item">
             <i className="fas fa-map-marker-alt"></i>
             <span>Bangalore, Karnataka</span>
           </div>
         </div>
         <div className="topbar-right">
+          <a href="tel:+919666744700" className="topbar-item" id="topbar-phone-alt" style={{ marginRight: "12px", fontWeight: "600" }}>
+            <i className="fas fa-phone-alt"></i>
+            <span>Alternate: +91 9666744700</span>
+          </a>
           <div className="topbar-social">
             <a href="https://www.facebook.com/swathisafetynets" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-facebook-f"></i>
